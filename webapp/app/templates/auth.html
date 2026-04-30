@@ -1,0 +1,266 @@
+{% extends "base.html" %}
+
+{% block title %}VeggieAI | Auth{% endblock %}
+
+{% block content %}
+  <div class="min-h-screen flex items-center justify-center p-4 md:p-8">
+    <div class="absolute inset-0 overflow-hidden -z-10">
+      <div class="absolute top-20 -left-20 w-[500px] h-[500px] bg-primary-400/20 dark:bg-primary-500/10 rounded-full blur-3xl"></div>
+      <div class="absolute -bottom-20 -right-20 w-[600px] h-[600px] bg-accent-400/20 dark:bg-accent-500/10 rounded-full blur-3xl"></div>
+    </div>
+
+    <div id="auth-container" class="w-full max-w-5xl grid lg:grid-cols-2 gap-8 items-center">
+      <div id="auth-image-panel" class="hidden lg:block relative">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary-500/20 to-accent-500/20 rounded-3xl blur-2xl"></div>
+        <div class="relative glass-card overflow-hidden">
+          <img
+            src="https://images.pexels.com/photos/1656663/pexels-photo-1656663.jpeg?auto=compress&cs=tinysrgb&w=800"
+            alt="Fresh vegetables"
+            class="w-full aspect-[4/5] object-cover"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-8">
+            <div class="flex items-center gap-2 mb-4">
+              <i data-lucide="leaf" class="w-8 h-8 text-primary-400"></i>
+              <span class="text-2xl font-bold text-white font-display">VeggieAI</span>
+            </div>
+            <h2 class="text-2xl font-bold text-white mb-2">Secure Access with Captcha + OTP</h2>
+            <p class="text-gray-300">
+              Accounts are protected with challenge verification and one-time password checks.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="w-full max-w-md mx-auto">
+        <form id="auth-form" class="card p-8 md:p-10">
+          <div class="text-center mb-8">
+            <div class="lg:hidden flex items-center justify-center gap-2 mb-4">
+              <i data-lucide="leaf" class="w-8 h-8 text-primary-500"></i>
+              <span class="text-2xl font-bold gradient-text font-display">VeggieAI</span>
+            </div>
+            <h1 id="auth-title" class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Welcome Back</h1>
+            <p id="auth-subtitle" class="text-gray-600 dark:text-gray-400">Sign in to continue to VeggieAI</p>
+          </div>
+
+          <div id="auth-mode-switch" class="relative flex rounded-xl bg-gray-100 dark:bg-gray-800 p-1 mb-6">
+            <div
+              id="mode-slider"
+              class="absolute top-1 bottom-1 left-1 w-[calc(50%-4px)] bg-gradient-to-br from-primary-500 to-primary-600 rounded-lg shadow-lg transition-transform duration-300"
+            ></div>
+            <button
+              id="mode-login"
+              type="button"
+              class="relative z-10 flex-1 py-2.5 rounded-lg font-medium text-sm transition-all text-white"
+            >
+              Sign In
+            </button>
+            <button
+              id="mode-signup"
+              type="button"
+              class="relative z-10 flex-1 py-2.5 rounded-lg font-medium text-sm transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200"
+            >
+              Sign Up
+            </button>
+          </div>
+
+          <div id="auth-error" class="hidden items-center gap-2 p-3 mb-4 rounded-xl bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 text-sm">
+            <i data-lucide="alert-circle" class="w-5 h-5 flex-shrink-0"></i>
+            <span id="auth-error-text"></span>
+          </div>
+
+          <div id="auth-success" class="hidden items-center gap-2 p-3 mb-4 rounded-xl bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 text-sm">
+            <i data-lucide="check-circle" class="w-5 h-5 flex-shrink-0"></i>
+            <span id="auth-success-text"></span>
+          </div>
+
+          <div id="auth-warning" class="hidden items-center gap-2 p-3 mb-4 rounded-xl bg-amber-50 dark:bg-amber-900/20 text-amber-600 dark:text-amber-400 text-sm">
+            <i data-lucide="alert-circle" class="w-5 h-5 flex-shrink-0"></i>
+            <span id="auth-warning-text"></span>
+          </div>
+
+          <div id="auth-dev-otp" class="hidden items-center gap-2 p-3 mb-4 rounded-xl bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-300 text-sm">
+            <i data-lucide="shield" class="w-5 h-5 flex-shrink-0"></i>
+            <span id="auth-dev-otp-text"></span>
+          </div>
+
+          <div class="space-y-4">
+            <div id="primary-fields">
+              <div id="field-name" class="form-field hidden mb-4">
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5" for="input-name">Full Name</label>
+                <div class="relative">
+                  <i data-lucide="user" class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"></i>
+                  <input id="input-name" type="text" class="input-field pl-12" placeholder="John Doe" maxlength="120" />
+                </div>
+              </div>
+
+              <div class="form-field mb-4">
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5" for="input-email">Email Address</label>
+                <div class="relative">
+                  <i data-lucide="mail" class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"></i>
+                  <input id="input-email" type="email" class="input-field pl-12" placeholder="you@example.com" maxlength="255" required />
+                </div>
+              </div>
+
+              <div class="form-field mb-4">
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5" for="input-password">Password</label>
+                <div class="relative">
+                  <i data-lucide="lock" class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"></i>
+                  <input id="input-password" type="password" class="input-field pl-12 pr-12" placeholder="Enter your password" minlength="6" maxlength="128" required />
+                  <button
+                    id="toggle-password"
+                    type="button"
+                    class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
+                  >
+                    <i id="password-eye" data-lucide="eye" class="w-5 h-5"></i>
+                    <i id="password-eye-off" data-lucide="eye-off" class="w-5 h-5 hidden"></i>
+                  </button>
+                </div>
+                <div class="mt-2 text-right">
+                  <button
+                    id="forgot-password-link"
+                    type="button"
+                    class="text-xs font-medium text-primary-600 dark:text-primary-400 hover:underline"
+                  >
+                    Forgot password?
+                  </button>
+                </div>
+              </div>
+
+              <div id="captcha-block" class="form-field rounded-xl border border-gray-200 dark:border-gray-700 p-4 hidden mb-4">
+                <div class="flex items-center justify-between gap-3 mb-2">
+                  <p class="text-sm font-medium text-gray-700 dark:text-gray-300 flex items-center gap-2">
+                    <i data-lucide="shield" class="w-4 h-4"></i>
+                    Captcha Challenge
+                  </p>
+                  <button id="captcha-refresh" type="button" class="text-xs text-primary-600 dark:text-primary-400 flex items-center gap-1">
+                    <i data-lucide="refresh-cw" class="w-3 h-3"></i>
+                    Refresh
+                  </button>
+                </div>
+                <div class="mb-3 rounded-lg bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 p-3">
+                  <img
+                    id="captcha-image"
+                    src=""
+                    alt="Captcha challenge"
+                    class="w-full h-28 md:h-32 object-contain select-none"
+                    style="image-rendering: crisp-edges"
+                    draggable="false"
+                  />
+                </div>
+                <p id="captcha-prompt" class="text-sm text-gray-600 dark:text-gray-400 mb-2">Type the 5-digit code shown.</p>
+                <input
+                  id="captcha-answer"
+                  type="text"
+                  class="input-field font-mono tracking-[0.18em] text-base md:text-lg"
+                  placeholder="Type 5-digit code"
+                  maxlength="5"
+                  inputmode="numeric"
+                  autoComplete="off"
+                  spellcheck="false"
+                />
+              </div>
+
+              <div id="field-terms" class="form-field hidden mb-4">
+                <label for="agree-terms" class="inline-flex items-start gap-3 cursor-pointer select-none">
+                  <input
+                    id="agree-terms"
+                    type="checkbox"
+                    class="mt-0.5 h-4 w-4 rounded border-gray-300 text-primary-600 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-800"
+                  />
+                  <span class="text-sm text-gray-600 dark:text-gray-300">
+                    I agree to the <span class="font-medium text-gray-900 dark:text-white">terms and conditions</span>.
+                  </span>
+                </label>
+              </div>
+
+              <button id="auth-submit" type="submit" class="form-field w-full btn-primary flex items-center justify-center gap-2 py-3.5">
+                <span id="auth-submit-label">Sign In</span>
+                <i id="auth-submit-icon" data-lucide="arrow-right" class="w-5 h-5"></i>
+                <span id="auth-submit-loader" class="loader w-5 h-5 border-2 hidden"></span>
+              </button>
+            </div>
+
+            <div id="forgot-fields" class="hidden">
+              <div class="form-field mb-4">
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5" for="forgot-email">Email Address</label>
+                <div class="relative">
+                  <i data-lucide="mail" class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"></i>
+                  <input id="forgot-email" type="email" class="input-field pl-12" placeholder="you@example.com" maxlength="255" />
+                </div>
+              </div>
+
+              <button id="forgot-submit" type="button" class="form-field w-full btn-primary flex items-center justify-center gap-2 py-3.5 mb-3">
+                <span id="forgot-submit-label">Send Reset Link</span>
+                <i data-lucide="mail-check" class="w-5 h-5"></i>
+              </button>
+
+              <button id="forgot-back" type="button" class="w-full btn-secondary">Back to Sign In</button>
+            </div>
+
+            <div id="reset-fields" class="hidden">
+              <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                Set a new password for your account.
+              </p>
+
+              <div class="form-field mb-4">
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5" for="reset-new-password">New Password</label>
+                <div class="relative">
+                  <i data-lucide="lock" class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"></i>
+                  <input id="reset-new-password" type="password" class="input-field pl-12" placeholder="Enter new password" minlength="8" maxlength="128" />
+                </div>
+              </div>
+
+              <div class="form-field mb-4">
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5" for="reset-confirm-password">Confirm New Password</label>
+                <div class="relative">
+                  <i data-lucide="check-circle" class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"></i>
+                  <input id="reset-confirm-password" type="password" class="input-field pl-12" placeholder="Confirm new password" minlength="8" maxlength="128" />
+                </div>
+              </div>
+
+              <button id="reset-submit" type="button" class="form-field w-full btn-primary flex items-center justify-center gap-2 py-3.5 mb-3">
+                <span id="reset-submit-label">Reset Password</span>
+                <i data-lucide="key" class="w-5 h-5"></i>
+              </button>
+
+              <button id="reset-back" type="button" class="w-full btn-secondary">Back to Sign In</button>
+            </div>
+
+            <div id="otp-fields" class="hidden">
+              <div class="form-field mb-4">
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5" for="input-otp">One-Time Password</label>
+                <div class="relative">
+                  <i data-lucide="shield" class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"></i>
+                  <input
+                    id="input-otp"
+                    type="text"
+                    inputmode="numeric"
+                    class="input-field pl-12 tracking-[0.35em]"
+                    placeholder="Enter OTP code"
+                    maxlength="12"
+                  />
+                </div>
+              </div>
+
+              <button id="otp-verify-btn" type="submit" class="form-field w-full btn-primary flex items-center justify-center gap-2 py-3.5 mb-3">
+                <span id="otp-verify-label">Verify OTP</span>
+                <i id="otp-verify-icon" data-lucide="arrow-right" class="w-5 h-5"></i>
+                <span id="otp-verify-loader" class="loader w-5 h-5 border-2 hidden"></span>
+              </button>
+
+              <div class="grid grid-cols-2 gap-3">
+                <button id="otp-resend" type="button" class="btn-secondary">Resend OTP</button>
+                <button id="otp-back" type="button" class="btn-secondary">Back</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+  <script defer src="{{ url_for('static', filename='js/auth.js', v=asset_version) }}"></script>
+{% endblock %}

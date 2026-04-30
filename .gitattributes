@@ -1,0 +1,28 @@
+* text=auto
+
+*.sh text eol=lf
+*.ps1 text eol=crlf
+*.bat text eol=crlf
+
+*.ipynb text eol=lf
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.wav binary
+*.pdf binary
+*.pptx binary
+*.docx binary
+*.zip binary
+
+*.pb binary
+*.index binary
+*.h5 binary
+*.hdf5 binary
+*.keras binary
+*.onnx binary
+*.pt binary
+*.pth binary
+*.pkl binary

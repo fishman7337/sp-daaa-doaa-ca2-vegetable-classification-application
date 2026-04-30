@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+
+{% block title %}VeggieAI | Profile{% endblock %}
+
+{% block content %}
+  <div class="min-h-screen pt-24 pb-12">
+    <div class="absolute inset-0 overflow-hidden -z-10">
+      <div class="absolute top-40 -right-40 w-[600px] h-[600px] bg-primary-200/20 dark:bg-primary-800/10 rounded-full blur-3xl"></div>
+      <div class="absolute -bottom-40 -left-40 w-[600px] h-[600px] bg-accent-200/20 dark:bg-accent-800/10 rounded-full blur-3xl"></div>
+    </div>
+
+    <div class="container mx-auto px-4 md:px-6">
+      <div class="max-w-4xl mx-auto space-y-6">
+        <div class="text-center">
+          <h1 class="text-3xl md:text-4xl font-bold font-display text-gray-900 dark:text-white mb-2">Profile Settings</h1>
+          <p class="text-gray-600 dark:text-gray-400">Manage your account details, profile picture, and password security.</p>
+        </div>
+
+        <div id="profile-alert" class="items-center gap-2 p-3 rounded-xl text-sm hidden">
+          <i id="profile-alert-icon-success" data-lucide="check-circle-2" class="w-5 h-5 flex-shrink-0 hidden"></i>
+          <i id="profile-alert-icon-error" data-lucide="alert-circle" class="w-5 h-5 flex-shrink-0 hidden"></i>
+          <span id="profile-alert-text"></span>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-6">
+          <section class="card p-6 space-y-6">
+            <h2 class="text-xl font-semibold text-gray-900 dark:text-white">Profile</h2>
+
+            <div class="flex items-center gap-4">
+              <img id="profile-avatar" src="" alt="Profile avatar" class="w-20 h-20 rounded-2xl object-cover ring-2 ring-primary-500/30 hidden" />
+              <div id="profile-avatar-fallback" class="w-20 h-20 rounded-2xl bg-gradient-to-br from-primary-400 to-primary-600 flex items-center justify-center">
+                <i data-lucide="user" class="w-10 h-10 text-white"></i>
+              </div>
+              <div class="space-y-2">
+                <button id="avatar-change-btn" type="button" class="btn-secondary inline-flex items-center gap-2">
+                  <i data-lucide="camera" class="w-4 h-4"></i>
+                  <span id="avatar-change-label">Change Picture</span>
+                </button>
+                <p class="text-xs text-gray-500 dark:text-gray-400">PNG/JPG only. Max 8MB.</p>
+              </div>
+              <input id="avatar-input" type="file" accept="image/*" class="hidden" />
+            </div>
+
+            <form id="profile-form" class="space-y-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5" for="profile-name">Display Name</label>
+                <div class="relative">
+                  <i data-lucide="user" class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"></i>
+                  <input id="profile-name" type="text" class="input-field pl-12" maxLength="120" />
+                </div>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5" for="profile-email">Email</label>
+                <div class="relative">
+                  <i data-lucide="mail" class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"></i>
+                  <input id="profile-email" type="email" class="input-field pl-12" maxLength="255" />
+                </div>
+              </div>
+              <button id="profile-save-btn" type="submit" class="btn-primary w-full inline-flex items-center justify-center gap-2">
+                <i data-lucide="save" class="w-4 h-4"></i>
+                <span id="profile-save-label">Save Profile</span>
+              </button>
+            </form>
+          </section>
+
+          <section class="card p-6 space-y-6">
+            <h2 class="text-xl font-semibold text-gray-900 dark:text-white">Change Password</h2>
+            <form id="password-form" class="space-y-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5" for="password-current">Current Password</label>
+                <div class="relative">
+                  <i data-lucide="lock" class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"></i>
+                  <input id="password-current" type="password" class="input-field pl-12" />
+                </div>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5" for="password-new">New Password</label>
+                <div class="relative">
+                  <i data-lucide="lock" class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"></i>
+                  <input id="password-new" type="password" class="input-field pl-12" minLength="8" />
+                </div>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5" for="password-confirm">Confirm New Password</label>
+                <div class="relative">
+                  <i data-lucide="lock" class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"></i>
+                  <input id="password-confirm" type="password" class="input-field pl-12" minLength="8" />
+                </div>
+              </div>
+              <button id="password-save-btn" type="submit" class="btn-primary w-full inline-flex items-center justify-center gap-2">
+                <i data-lucide="lock" class="w-4 h-4"></i>
+                <span id="password-save-label">Update Password</span>
+              </button>
+            </form>
+
+            <div class="pt-4 border-t border-red-200/60 dark:border-red-900/40">
+              <h3 class="text-sm font-semibold text-red-600 dark:text-red-400 mb-1">Danger Zone</h3>
+              <p class="text-xs text-gray-500 dark:text-gray-400 mb-3">
+                Deleting your profile is permanent and removes your account data.
+              </p>
+              <button
+                id="profile-delete-btn"
+                type="button"
+                class="w-full inline-flex items-center justify-center gap-2 rounded-xl border border-red-500/50 bg-red-50 text-red-700 hover:bg-red-100 dark:bg-red-900/20 dark:text-red-300 dark:hover:bg-red-900/30 py-2.5 font-medium transition-colors"
+              >
+                <i data-lucide="trash-2" class="w-4 h-4"></i>
+                <span id="profile-delete-label">Delete Profile</span>
+              </button>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+  <script defer src="{{ url_for('static', filename='js/profile.js', v=asset_version) }}"></script>
+{% endblock %}

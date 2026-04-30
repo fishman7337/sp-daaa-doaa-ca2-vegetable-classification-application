@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wireframePage
+  id="predict"
+  route="/predict"
+  template="predict.html"
+  auth="required"
+  viewportDesktop="1440x900"
+  viewportMobile="390x844"
+>
+  <uses source="global_shell_wireframe.xml" />
+
+  <region id="classify-header" bounds="220,120,1000,130">
+    <component id="tab-switch" type="segmented-control" values="Classify,History" bounds="520,130,400,56" />
+    <component id="title-copy" type="heading-plus-description" bounds="340,220,760,90" />
+    <component id="model-select" type="select-with-metadata" bounds="470,320,500,86" />
+  </region>
+
+  <region id="classify-panel" bounds="180,430,1080,440" visibleWhen="tab=Classify">
+    <column id="left-input" bounds="180,430,520,440">
+      <component id="dropzone" type="image-dropzone-square" bounds="180,430,520,320" />
+      <component id="initial-actions" type="camera-plus-upload-buttons" bounds="180,764,520,58" />
+      <component id="sample-strip" type="horizontal-thumbnails" bounds="180,834,520,72" />
+      <component id="predict-action" type="primary-button" hiddenUntilImageSelected="true" />
+    </column>
+    <column id="right-output" bounds="720,430,540,440">
+      <component id="result-empty" type="placeholder-card" />
+      <component id="result-list" type="prediction-cards-list" hiddenByDefault="true" />
+    </column>
+  </region>
+
+  <region id="history-panel" bounds="160,430,1120,460" visibleWhen="tab=History" hiddenByDefault="true">
+    <component id="history-toolbar" type="search-filter-export-row" bounds="160,430,1120,120" />
+    <component id="history-filters" type="collapsible-filters-card" bounds="160,560,1120,130" />
+    <component id="history-grid" type="prediction-history-grid" bounds="160,700,1120,190" />
+    <component id="history-empty" type="empty-state" hiddenByDefault="true" />
+  </region>
+
+  <overlay id="history-detail-modal" type="center-modal" />
+  <overlay id="history-delete-modal" type="confirm-dialog" />
+  <overlay id="history-clear-modal" type="confirm-dialog" />
+
+  <overlay id="camera-modal" type="full-screen-camera">
+    <region id="camera-toolbar-top" bounds="24,20,1392,64">
+      <component id="camera-close" type="icon-button" />
+      <component id="mode-switch-top" type="segmented-control" values="Capture,Live Detect" />
+      <component id="camera-flip" type="icon-button" />
+    </region>
+    <region id="camera-stage" bounds="0,88,1440,640">
+      <component id="camera-video" type="live-video-frame" />
+      <component id="focus-box" type="focus-region-frame" />
+      <component id="detection-box" type="bounding-box-overlay" hiddenByDefault="true" />
+      <component id="live-result-chip" type="result-pill" hiddenByDefault="true" />
+    </region>
+    <region id="camera-controls-bottom" bounds="0,730,1440,170">
+      <component id="mode-switch-bottom" type="segmented-control" values="Capture,Live Detect,Close" />
+      <component id="capture-button" type="shutter-button" visibleWhen="mode=Capture" />
+      <component id="preview-actions" type="retake-use-buttons" hiddenByDefault="true" />
+      <component id="live-detect-hint" type="status-copy" visibleWhen="mode=Live Detect" />
+    </region>
+  </overlay>
+
+  <responsiveRules>
+    <rule id="classify-mobile-single-column">
+      <when viewport="&lt;=1024" />
+      <change target="classify-panel" action="stack-columns" />
+      <change target="history-panel" action="stack-toolbar-and-grid" />
+    </rule>
+  </responsiveRules>
+</wireframePage>

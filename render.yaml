@@ -1,0 +1,70 @@
+services:
+  - type: web
+    name: doaa-backend
+    env: docker
+    repo: .
+    dockerfilePath: backend/Dockerfile
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: JWT_SECRET
+        generateValue: true
+      - key: DATABASE_PATH
+        value: /data/app.db
+      - key: MODEL_SERVICE_URL
+        value: https://doaa-model-service.onrender.com
+      - key: MODEL_SERVICE_TIMEOUT_SEC
+        value: "30"
+      - key: MODELS_ROOT
+        value: /models
+      - key: ADMIN_USERNAME
+        value: admin
+      - key: ADMIN_PASSWORD
+        generateValue: true
+      - key: CORS_ORIGINS
+        value: https://doaa-backend.onrender.com
+      - key: CAPTCHA_ENABLED
+        value: "true"
+      - key: CAPTCHA_LENGTH
+        value: "6"
+      - key: CAPTCHA_IMAGE_WIDTH
+        value: "360"
+      - key: CAPTCHA_IMAGE_HEIGHT
+        value: "120"
+      - key: CAPTCHA_DEV_MODE
+        value: "false"
+      - key: OTP_ENABLED
+        value: "true"
+      - key: OTP_DEV_MODE
+        value: "false"
+      - key: SECURITY_HEADERS_ENABLED
+        value: "true"
+      - key: ENABLE_HSTS
+        value: "true"
+      - key: FORCE_HTTPS
+        value: "true"
+      - key: SESSION_COOKIE_SECURE
+        value: "true"
+      - key: VEGNET_REMOTE_ENABLED
+        value: "true"
+      - key: VEGNET_23_URL
+        value: https://ca2-daaa2b02-p2415691-gohkunming.onrender.com/v1/models/vegnet-23
+      - key: VEGNET_101_URL
+        value: https://ca2-daaa2b02-p2415691-gohkunming.onrender.com/v1/models/vegnet-101
+      - key: VEGNET_REMOTE_TIMEOUT_SEC
+        value: "45"
+    disks:
+      - name: sqlite-data
+        mountPath: /data
+        sizeGB: 1
+
+  - type: web
+    name: doaa-model-service
+    env: docker
+    repo: .
+    dockerfilePath: model_service/Dockerfile
+    envVars:
+      - key: MODEL_MODE
+        value: auto
+      - key: MODELS_ROOT
+        value: /models

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wireframePage
+  id="prices"
+  route="/prices"
+  template="prices.html"
+  auth="required"
+  viewportDesktop="1440x900"
+  viewportMobile="390x844"
+>
+  <uses source="global_shell_wireframe.xml" />
+
+  <region id="prices-hero" bounds="140,120,1160,270">
+    <component id="prices-badge" type="kicker-badge" />
+    <component id="prices-title" type="h1-gradient-accent" />
+    <component id="prices-copy" type="paragraph" />
+    <component id="top-kpis" type="4-stat-cards" />
+  </region>
+
+  <region id="prices-main-grid" bounds="120,410,1200,470">
+    <column id="left-results" bounds="120,410,700,470">
+      <component id="search-filter-row" type="search-plus-market-select" />
+      <component id="vegetable-price-cards" type="list" />
+    </column>
+
+    <column id="right-sidebar" bounds="850,410,470,470" sticky="true">
+      <component id="basket-card" type="interactive-basket" />
+      <component id="projections-card" type="savings-projections" />
+      <component id="top-deals-card" type="ranked-list" />
+    </column>
+  </region>
+
+  <overlay id="price-modal" type="centered-modal-viewport">
+    <component id="modal-header" type="gradient-header" />
+    <component id="modal-tabs" type="segmented-control" values="Prices,Locations" />
+    <component id="modal-content" type="dual-tab-content" />
+  </overlay>
+
+  <responsiveRules>
+    <rule id="prices-mobile-stack">
+      <when viewport="&lt;=1024" />
+      <change target="prices-main-grid" action="stack-columns" />
+      <change target="prices-main-grid.right-sidebar" action="move-below-results" />
+    </rule>
+  </responsiveRules>
+</wireframePage>

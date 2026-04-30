@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wireframePage
+  id="global-shell"
+  app="VeggieAI"
+  purpose="shared-layout"
+  viewportDesktop="1440x900"
+  viewportMobile="390x844"
+  template="base.html"
+>
+  <theme default="dark">
+    <token name="background.primary" value="#020617" />
+    <token name="background.card" value="#1e293b" />
+    <token name="accent.primary" value="#22c55e" />
+    <token name="accent.secondary" value="#0ea5e9" />
+    <token name="text.primary" value="#f8fafc" />
+    <token name="text.muted" value="#94a3b8" />
+  </theme>
+
+  <region id="background-orbs" type="decorative" bounds="0,0,1440,900" />
+  <region id="navbar" type="fixed-top" bounds="0,0,1440,88">
+    <component id="brand" type="logo-cluster" bounds="48,20,220,48" />
+    <component id="primary-nav" type="pill-tabs" bounds="520,18,400,52">
+      <item key="home" />
+      <item key="classify" authOnly="true" />
+      <item key="prices" authOnly="true" />
+      <item key="profile" authOnly="true" />
+    </component>
+    <component id="theme-toggle" type="icon-button" bounds="1160,20,44,44" />
+    <component id="cta-or-profile" type="button-or-menu" bounds="1216,18,180,48" />
+    <component id="mobile-menu-toggle" type="icon-button" mobileOnly="true" />
+  </region>
+
+  <region id="page-shell" type="content-host" bounds="0,88,1440,812" />
+  <region id="chat-fab" type="floating-button" authOnly="true" bounds="1368,818,56,56" />
+  <region id="chat-panel" type="floating-panel" authOnly="true" bounds="1032,216,384,600" />
+  <region id="footer" type="global-footer" bounds="0,900,1440,280" nonAuthHidden="true" />
+
+  <responsiveRules>
+    <rule id="mobile-nav">
+      <when viewport="&lt;=768" />
+      <change target="navbar.primary-nav" action="hide" />
+      <change target="navbar.mobile-menu-toggle" action="show" />
+    </rule>
+  </responsiveRules>
+</wireframePage>

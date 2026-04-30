@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wireframePage
+  id="history"
+  route="/history"
+  template="predict.html#history-tab"
+  auth="required"
+  viewportDesktop="1440x900"
+  viewportMobile="390x844"
+>
+  <uses source="global_shell_wireframe.xml" />
+
+  <note>
+    Backend route /history redirects to /predict?tab=history. This wireframe models the final rendered state.
+  </note>
+
+  <region id="history-header" bounds="180,120,1080,90">
+    <component id="title" type="heading" text="Prediction History" />
+    <component id="subtitle" type="summary-count" text="N total predictions" />
+    <component id="actions" type="export-and-clear-buttons" />
+  </region>
+
+  <region id="history-controls" bounds="180,230,1080,140">
+    <component id="search-input" type="search-field-with-clear" />
+    <component id="filter-toggle" type="button-with-chevron" />
+    <component id="filters-panel" type="collapsible-card" hiddenByDefault="true" />
+  </region>
+
+  <region id="history-content" bounds="180,390,1080,470">
+    <component id="history-grid" type="cards-grid-scrollable" />
+    <component id="history-empty-state" type="empty-card" hiddenByDefault="true" />
+  </region>
+
+  <overlay id="history-detail-modal" type="center-modal" />
+  <overlay id="history-delete-modal" type="confirm-dialog" />
+  <overlay id="history-clear-modal" type="confirm-dialog" />
+</wireframePage>

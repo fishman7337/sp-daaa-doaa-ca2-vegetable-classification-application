@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wireframePage
+  id="home"
+  route="/"
+  template="home.html"
+  auth="public"
+  viewportDesktop="1440x900"
+  viewportMobile="390x844"
+>
+  <uses source="global_shell_wireframe.xml" />
+
+  <section id="hero" bounds="0,88,1440,760">
+    <component id="hero-kicker" type="badge" bounds="170,170,280,40" />
+    <component id="hero-headline" type="h1-typed" bounds="170,230,560,220" />
+    <component id="hero-copy" type="paragraph" bounds="170,460,520,88" />
+    <component id="hero-cta-primary" type="button" bounds="170,570,220,52" />
+    <component id="hero-cta-secondary" type="button-outline" bounds="410,570,230,52" />
+    <component id="hero-stats" type="three-metric-cards" bounds="170,648,500,92" />
+    <component id="hero-preview-card" type="image-result-card" bounds="790,180,500,430" />
+    <component id="explore-scroll-indicator" type="scroll-hint" bounds="700,780,40,64" />
+  </section>
+
+  <section id="features" bounds="0,860,1440,760">
+    <component id="features-header" type="section-header" bounds="340,930,760,180" />
+    <component id="features-grid" type="8-feature-cards" bounds="130,1150,1180,410" />
+  </section>
+
+  <section id="how-it-works" bounds="0,1640,1440,620">
+    <component id="steps-column" type="3-step-timeline" bounds="150,1760,560,420" />
+    <component id="demo-column" type="media-card" bounds="760,1770,520,340" />
+  </section>
+
+  <section id="vegetable-showcase" bounds="0,2280,1440,520">
+    <component id="showcase-header" type="section-header" bounds="320,2350,800,160" />
+    <component id="showcase-grid" type="12-image-cards" bounds="140,2520,1160,240" />
+  </section>
+
+  <section id="cta-banner" bounds="0,2820,1440,380">
+    <component id="cta-content" type="gradient-callout-card" bounds="140,2890,1160,250" />
+  </section>
+</wireframePage>

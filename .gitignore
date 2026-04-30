@@ -1,0 +1,86 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+env/
+.env
+.env.*
+!.env.example
+pip-wheel-metadata/
+
+# Test artifacts
+.pytest_cache/
+.pytest_tmp/
+.pytest_tmp_local/
+.coverage
+htmlcov/
+coverage.xml
+.ruff_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Logs
+*.log
+
+# Frontend
+node_modules/
+
+# Local data and models
+data/*
+!data/README.md
+!data/**/
+!data/**/README.md
+!data/**/.gitkeep
+models/*
+!models/README.md
+!models/**/
+!models/**/README.md
+!models/**/.gitkeep
+!models/models.json
+!models/model_a/**
+!models/model_b/**
+reports/*
+!reports/README.md
+!reports/**/
+!reports/**/README.md
+!reports/**/.gitkeep
+
+# Flask runtime
+webapp/instance/*
+!webapp/instance/.gitkeep
+!webapp/instance/README.md
+
+# Backend uploads
+backend/uploads/*
+backend/uploads/**/*
+!backend/uploads/.gitkeep
+!backend/uploads/README.md
+!backend/uploads/**/
+!backend/uploads/**/README.md
+
+# Databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Local scratch/runtime temp folders
+/.dist/*
+!/.dist/README.md
+/models.config/
+/tmp_testdb/
+/tmp_uploads/
+
+# OS/IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
