@@ -9,7 +9,9 @@ from urllib.parse import parse_qs, urlparse
 import pytest
 from PIL import Image
 
-from backend.utils.security import hash_password, verify_password
+from backend.db import get_db
+from backend.repository import get_user_by_username
+from backend.utils.security import hash_password, seed_admin, verify_password
 
 from .conftest import make_image_bytes
 
@@ -168,6 +170,25 @@ def test_password_hashing_uses_salt():
     assert first != second
     assert verify_password(password, first)
     assert verify_password(password, second)
+
+
+def test_password_verification_rejects_invalid_hash_format():
+    """Treat malformed stored password hashes as failed verification."""
+    assert verify_password("pass1234", "not-a-bcrypt-hash") is False
+
+
+def test_seed_admin_is_idempotent(app):
+    """Avoid creating duplicate admin users when setup runs more than once."""
+    with app.app_context():
+        db = get_db()
+        before = get_user_by_username(db, "admin")
+        assert before is not None
+
+        seed_admin(db, "admin", "replacement-password")
+
+        after = get_user_by_username(db, "admin")
+        assert after["id"] == before["id"]
+        assert after["password_hash"] == before["password_hash"]
 
 
 def test_login_requires_captcha_when_enabled(client):

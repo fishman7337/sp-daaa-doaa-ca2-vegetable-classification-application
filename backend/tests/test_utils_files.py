@@ -6,7 +6,7 @@ from pathlib import Path
 
 import pytest
 
-from backend.utils.files import resolve_uploaded_file_path
+from backend.utils.files import _is_within, resolve_uploaded_file_path
 
 pytestmark = [pytest.mark.unit, pytest.mark.security]
 
@@ -63,3 +63,25 @@ def test_resolve_uploaded_file_path_rejects_empty_refs(tmp_path: Path, raw_ref: 
     upload_root = tmp_path / "uploads"
     upload_root.mkdir(parents=True, exist_ok=True)
     assert resolve_uploaded_file_path(upload_root, raw_ref) is None
+
+
+def test_is_within_detects_child_and_sibling_paths(tmp_path: Path):
+    """Classify paths by containment after callers have resolved them."""
+    upload_root = (tmp_path / "uploads").resolve()
+    upload_root.mkdir(parents=True, exist_ok=True)
+    child = upload_root / "safe.jpg"
+    sibling = (tmp_path / "outside.jpg").resolve()
+
+    assert _is_within(child, upload_root) is True
+    assert _is_within(sibling, upload_root) is False
+
+
+def test_resolve_uploaded_file_path_rejects_missing_files_and_directories(tmp_path: Path):
+    """Return None when the resolved upload target is absent or not a file."""
+    upload_root = tmp_path / "uploads"
+    upload_root.mkdir(parents=True, exist_ok=True)
+    directory_ref = upload_root / "folder"
+    directory_ref.mkdir()
+
+    assert resolve_uploaded_file_path(upload_root, "missing.jpg") is None
+    assert resolve_uploaded_file_path(upload_root, "folder") is None
