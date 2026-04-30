@@ -1,0 +1,40 @@
+html {
+  background: #000000;
+  color-scheme: dark;
+}
+
+html.dark,
+html[data-theme="dark"] {
+  background: #000000;
+  color-scheme: dark;
+}
+
+html.light,
+html[data-theme="light"] {
+  background: #f9fafb;
+  color-scheme: light;
+}
+
+html.theme-init {
+  background: #000000;
+  color-scheme: dark;
+}
+
+html.theme-init.dark,
+html.theme-init[data-theme="dark"] {
+  background: #000000 !important;
+  color-scheme: dark !important;
+}
+
+html.theme-init.light,
+html.theme-init[data-theme="light"] {
+  background: #f9fafb !important;
+  color-scheme: light !important;
+}
+
+html.theme-init *,
+html.theme-init *::before,
+html.theme-init *::after {
+  transition: none !important;
+  animation: none !important;
+}

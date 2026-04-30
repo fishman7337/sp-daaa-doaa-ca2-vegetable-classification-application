@@ -1,0 +1,63 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+env/
+.env
+.env.*
+!.env.example
+pip-wheel-metadata/
+
+# Test and lint artifacts
+.pytest_cache/
+.pytest_tmp/
+.pytest_tmp_local/
+.ruff_cache/
+.coverage
+htmlcov/
+coverage.xml
+
+# Logs
+*.log
+
+# Frontend
+node_modules/
+
+# Databases and runtime state
+*.db
+*.sqlite
+*.sqlite3
+Source-Codes/backend/uploads/*
+Source-Codes/backend/uploads/**/*
+!Source-Codes/backend/uploads/.gitkeep
+!Source-Codes/backend/uploads/README.md
+!Source-Codes/backend/uploads/**/
+!Source-Codes/backend/uploads/**/README.md
+Source-Codes/webapp/instance/*
+!Source-Codes/webapp/instance/.gitkeep
+!Source-Codes/webapp/instance/README.md
+
+# Generated reports and local scratch
+Source-Codes/reports/*
+!Source-Codes/reports/README.md
+!Source-Codes/reports/**/
+!Source-Codes/reports/**/README.md
+!Source-Codes/reports/**/.gitkeep
+Source-Codes/.dist/*
+!Source-Codes/.dist/README.md
+Source-Codes/tmp_testdb/
+Source-Codes/tmp_uploads/
+
+# OS/IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

@@ -1,0 +1,53 @@
+services:
+  model_service:
+    build:
+      context: .
+      dockerfile: model_service/Dockerfile
+    image: doaa/model-service:local
+    environment:
+      MODEL_MODE: "auto"
+      MODELS_ROOT: /models
+    volumes:
+      - ./models:/models:ro
+    ports:
+      - "8000:8000"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request as u; u.urlopen('http://localhost:8000/health')"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    image: doaa/backend:local
+    env_file:
+      - .env
+    environment:
+      DATABASE_PATH: /data/app.db
+      MODEL_SERVICE_URL: ${MODEL_SERVICE_URL:-http://model_service:8000}
+      MODELS_ROOT: /models
+      UPLOAD_DIR: /app/backend/uploads
+      SECRET_KEY: ${SECRET_KEY:-dev-only-change-me}
+      JWT_SECRET: ${JWT_SECRET:-dev-only-change-me-too}
+      ADMIN_USERNAME: ${ADMIN_USERNAME:-admin}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-admin123}
+    volumes:
+      - sqlite_data:/data
+      - uploads:/app/backend/uploads
+      - ./models:/models:ro
+    ports:
+      - "5000:5000"
+    depends_on:
+      model_service:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request as u; u.urlopen('http://localhost:5000/api/health')"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+
+volumes:
+  sqlite_data:
+  uploads:

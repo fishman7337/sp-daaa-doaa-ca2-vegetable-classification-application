@@ -1,0 +1,39 @@
+[project]
+name = "veggieai-mlops-platform"
+version = "0.1.0"
+description = "Singapore Polytechnic ST1516 CA2 Flask MLOps platform for vegetable image classification."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [
+    { name = "Goh Kun Ming" },
+]
+keywords = ["mlops", "flask", "pytest", "devops", "vegetable-classification"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+extend-exclude = ["model_serving/notebooks", "tf_models", "data"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "D"]
+ignore = ["E501"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+
+[tool.coverage.run]
+branch = true
+omit = [
+    "backend/tests/*",
+    "model_service/tests/*",
+]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
+fail_under = 85

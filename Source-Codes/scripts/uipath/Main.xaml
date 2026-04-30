@@ -1,0 +1,434 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Drawing;assembly=System.Drawing.Common" xmlns:sd1="clr-namespace:System.Drawing;assembly=System.Drawing.Primitives" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Platform.SyncObjects</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>UiPath.Vision.OCR</x:String>
+      <x:String>UiPath.OCR.Contracts</x:String>
+      <x:String>UiPath.OCR.Activities</x:String>
+      <x:String>UiPath.OCR.Contracts.Activities</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
+      <x:String>UiPath.Activities.System.Text</x:String>
+      <x:String>UiPath.IntegrationService.Activities.Runtime.Models.FilterBuilder</x:String>
+      <x:String>UiPath.IntegrationService.Activities.Runtime.Models</x:String>
+      <x:String>UiPath.IntegrationService.Activities.Runtime.Helpers.TypeDetailsCustomization</x:String>
+      <x:String>UiPath.IntegrationService.Activities.Runtime.Activities</x:String>
+      <x:String>UiPath.Platform.Activities</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Reflection.MetadataLoadContext</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Core</AssemblyReference>
+      <AssemblyReference>UiPath.Vision.Core</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Contracts</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>UiPath.IntegrationService.Activities.Runtime</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="897.2,4100.8" sap2010:WorkflowViewState.IdRef="Sequence_3">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="textValue">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:String x:Key="SourceIdRef">NGetText_1</x:String>
+            <x:String x:Key="SourcePropertyName">TextString</x:String>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </Variable>
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Sequence sap:VirtualizedContainerService.HintSize="484.8,4077.6" sap2010:WorkflowViewState.IdRef="Sequence_2">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Chrome VeggieAI  Home" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="451.2,3994.4" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="0f96271e-41e0-4cc6-a536-00f42fdc7f98" Version="V2">
+        <uix:NApplicationCard.Body>
+          <ActivityAction x:TypeArguments="x:Object">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="449.6,3800.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Get Started'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,197.6" sap2010:WorkflowViewState.IdRef="NClick_4" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="0f96271e-41e0-4cc6-a536-00f42fdc7f98" Version="V5">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable BrowserURL="127.0.0.1" CVScreenId="212323cf-53ba-40f7-87b1-d5ca086e0e1f" ContentHash="q7pJolkQ4k2qiJQIY9dRew" CvElementArea="1639, 246, 164, 50" CvTextArea="1690, 262, 87, 15" CvTextArgument="Get Started" CvType="Button" DesignTimeRectangle="1642, 250, 158, 45" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl aaname='                                  Get Started               ' tag='A' /&gt;" Guid="cc64d83c-a7d0-43e7-84f5-c0edf2c4bece" InformativeScreenshot="bb150b67a20572b3bda3cd2c9737828c.jpg" Reference="0lMVdDpNSk2615ruw2Pqmg/_jW1wi_o2UGpOqm8Us2N5A" ScopeSelectorArgument="&lt;html app='chrome.exe' title='VeggieAI | Home' /&gt;" SearchSteps="Selector, CV" Version="V6" WaitForReadyArgument="Interactive" />
+                </uix:NClick.Target>
+              </uix:NClick>
+              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Sign Up'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,197.6" sap2010:WorkflowViewState.IdRef="NClick_5" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="0f96271e-41e0-4cc6-a536-00f42fdc7f98" Version="V5">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable BrowserURL="127.0.0.1/auth" CVScreenId="08eae297-0c22-4163-88fb-c2cb9833965c" ContentHash="6-dCQ_rIN0eCwMYy3wB5iw" CvTextArea="1329, 432, 60, 18" CvTextArgument="Sign Up" CvType="Text" DesignTimeRectangle="1259, 419, 202, 45" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl id='mode-signup' tag='BUTTON' /&gt;" Guid="f16dfe2c-36fd-48a4-8d18-0364ba3b6ff0" InformativeScreenshot="6f39cc8c4b7548ff166b875eec79cafa.jpg" Reference="0lMVdDpNSk2615ruw2Pqmg/FPF11Y9ZsUaqWrgto8QYvQ" ScopeSelectorArgument="&lt;html app='chrome.exe' title='VeggieAI | Auth' /&gt;" SearchSteps="Selector, CV" Version="V6" WaitForReadyArgument="Interactive" />
+                </uix:NClick.Target>
+              </uix:NClick>
+              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Full Name'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,197.6" sap2010:WorkflowViewState.IdRef="NClick_6" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="0f96271e-41e0-4cc6-a536-00f42fdc7f98" Version="V5">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable BrowserURL="127.0.0.1/auth" CVScreenId="db708394-85b4-44ec-98e5-aa0e4767b979" ContentHash="-mgzxruLh0C8QpicT6SGwg" CvElementArea="1053, 523, 414, 60" CvType="InputBox" DesignTimeRectangle="1054, 525, 412, 58" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='input-name' tag='INPUT' type='text' class='input-field pl-12' placeholder='John Doe' aaname='Full Name' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="3bfad0ff-8477-4adf-b622-c7bf16092254" InformativeScreenshot="8fe7ad058b64db7ec5a3e75f7377a4da.jpg" IsResponsive="True" Reference="0lMVdDpNSk2615ruw2Pqmg/CoQXg4gRVEiqGrHp2aoebA" ScopeSelectorArgument="&lt;html app='chrome.exe' title='VeggieAI | Auth' /&gt;" SearchSteps="FuzzySelector, CV" Version="V6" WaitForReadyArgument="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target CVScreenId="db708394-85b4-44ec-98e5-aa0e4767b979" CvTextArea="1051, 497, 77, 15" CvTextArgument="Full Name" CvType="Text" DesignTimeRectangle="1054, 496, 412, 22" ElementType="Text" FuzzySelectorArgument="&lt;webctrl tag='LABEL' type='' class='block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5' aaname='Full Name' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:innerText='Full Name' /&gt;" Guid="918a0177-0bfd-4ac5-aae1-9a915088bdb2" SearchSteps="FuzzySelector, CV" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NClick.Target>
+              </uix:NClick>
+              <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" ClipboardMode="Never" DisplayName="Type Into 'Full Name'" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,249.6" sap2010:WorkflowViewState.IdRef="NTypeInto_1" InteractionMode="SameAsCard" ScopeIdentifier="0f96271e-41e0-4cc6-a536-00f42fdc7f98" Text="RPABot" Version="V5">
+                <uix:NTypeInto.Target>
+                  <uix:TargetAnchorable BrowserURL="127.0.0.1/auth" CVScreenId="db708394-85b4-44ec-98e5-aa0e4767b979" ContentHash="96t81gS5wEKmPf612NbxQA" CvElementArea="1053, 523, 414, 60" CvType="InputBox" DesignTimeRectangle="1054, 525, 412, 58" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='input-name' tag='INPUT' type='text' class='input-field pl-12' placeholder='John Doe' aaname='Full Name' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="e56ae298-cb8c-41d8-b9e3-5fc51e9ed19c" InformativeScreenshot="8fe7ad058b64db7ec5a3e75f7377a4da.jpg" IsResponsive="True" Reference="0lMVdDpNSk2615ruw2Pqmg/G3GbGxZvOkuIIYHddUUwAw" ScopeSelectorArgument="&lt;html app='chrome.exe' title='VeggieAI | Auth' /&gt;" SearchSteps="FuzzySelector, CV" Version="V6" WaitForReadyArgument="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target CVScreenId="db708394-85b4-44ec-98e5-aa0e4767b979" CvTextArea="1051, 497, 77, 15" CvTextArgument="Full Name" CvType="Text" DesignTimeRectangle="1054, 496, 412, 22" ElementType="Text" FuzzySelectorArgument="&lt;webctrl tag='LABEL' type='' class='block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5' aaname='Full Name' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:innerText='Full Name' /&gt;" Guid="99d35471-2e1f-4c24-ad29-f71a03865284" SearchSteps="FuzzySelector, CV" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NTypeInto.Target>
+                <uix:NTypeInto.VerifyOptions>
+                  <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                    <uix:VerifyExecutionTypeIntoOptions.Retry>
+                      <InArgument x:TypeArguments="x:Boolean" />
+                    </uix:VerifyExecutionTypeIntoOptions.Retry>
+                    <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                      <InArgument x:TypeArguments="x:Double" />
+                    </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                  </uix:VerifyExecutionTypeIntoOptions>
+                </uix:NTypeInto.VerifyOptions>
+              </uix:NTypeInto>
+              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Email Address'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,197.6" sap2010:WorkflowViewState.IdRef="NClick_7" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="0f96271e-41e0-4cc6-a536-00f42fdc7f98" Version="V5">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable BrowserURL="127.0.0.1/auth" CVScreenId="db708394-85b4-44ec-98e5-aa0e4767b979" ContentHash="Jngjs1yxgEWdpiYP10YwKQ" CvElementArea="1051, 628, 416, 62" CvType="InputBox" DesignTimeRectangle="1054, 631, 412, 58" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='input-email' tag='INPUT' type='email' class='input-field pl-12' placeholder='you@example.com' aaname='Email Address' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="a70cfc42-7f9b-4949-abb7-8c4cdfa3b25b" InformativeScreenshot="bde74b200443a6c5c44656b963f76b6b.jpg" IsResponsive="True" Reference="0lMVdDpNSk2615ruw2Pqmg/FOcQOyqpJ0uuyuezH8MUKg" ScopeSelectorArgument="&lt;html app='chrome.exe' title='VeggieAI | Auth' /&gt;" SearchSteps="FuzzySelector, CV" Version="V6" WaitForReadyArgument="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target CVScreenId="db708394-85b4-44ec-98e5-aa0e4767b979" CvTextArea="1051, 602, 110, 15" CvTextArgument="Email Address" CvType="Text" DesignTimeRectangle="1054, 601, 412, 23" ElementType="Text" FuzzySelectorArgument="&lt;webctrl parentid='primary-fields' tag='LABEL' type='' class='block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5' aaname='Email Address' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:innerText='Email Address' /&gt;" Guid="eac2add2-6a04-450d-98ab-388666cfc8ca" SearchSteps="FuzzySelector, CV" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NClick.Target>
+              </uix:NClick>
+              <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" ClipboardMode="Never" DisplayName="Type Into 'Email Address'" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,249.6" sap2010:WorkflowViewState.IdRef="NTypeInto_2" InteractionMode="SameAsCard" ScopeIdentifier="0f96271e-41e0-4cc6-a536-00f42fdc7f98" Text="rpatest@gmail.com" Version="V5">
+                <uix:NTypeInto.DelayAfter>
+                  <InArgument x:TypeArguments="x:Double" />
+                </uix:NTypeInto.DelayAfter>
+                <uix:NTypeInto.DelayBefore>
+                  <InArgument x:TypeArguments="x:Double" />
+                </uix:NTypeInto.DelayBefore>
+                <uix:NTypeInto.DelayBetweenKeys>
+                  <InArgument x:TypeArguments="x:Double" />
+                </uix:NTypeInto.DelayBetweenKeys>
+                <uix:NTypeInto.InUiElement>
+                  <InArgument x:TypeArguments="ui:UiElement" />
+                </uix:NTypeInto.InUiElement>
+                <uix:NTypeInto.OutUiElement>
+                  <OutArgument x:TypeArguments="ui:UiElement" />
+                </uix:NTypeInto.OutUiElement>
+                <uix:NTypeInto.Target>
+                  <uix:TargetAnchorable BrowserURL="127.0.0.1/auth" CVScreenId="9402072d-2400-4607-a3a6-e7deced4e1b7" ContentHash="q_we34YcDEe9YKeOy47ZqQ" CvElementArea="1051, 628, 416, 62" CvType="InputBox" DesignTimeRectangle="1054, 631, 412, 58" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='input-email' tag='INPUT' type='email' class='input-field pl-12' placeholder='you@example.com' aaname='Email Address' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="7d9dfbb0-bc20-479e-adcb-367b6f9d86b5" InformativeScreenshot="0404b40055bb28694a830472dd14bd6b.jpg" IsResponsive="True" Reference="0lMVdDpNSk2615ruw2Pqmg/nhrP4razO0GkMoM4Vfoo_A" ScopeSelectorArgument="&lt;html app='chrome.exe' title='VeggieAI | Auth' /&gt;" SearchSteps="FuzzySelector, CV" Version="V6" WaitForReadyArgument="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target CVScreenId="9402072d-2400-4607-a3a6-e7deced4e1b7" CvTextArea="1051, 602, 110, 15" CvTextArgument="Email Address" CvType="Text" DesignTimeRectangle="1054, 601, 412, 23" ElementType="Text" FuzzySelectorArgument="&lt;webctrl parentid='primary-fields' tag='LABEL' type='' class='block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5' aaname='Email Address' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:innerText='Email Address' /&gt;" Guid="ae56a45f-a8f3-411c-a895-7867310aa808" SearchSteps="FuzzySelector, CV" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NTypeInto.Target>
+                <uix:NTypeInto.Timeout>
+                  <InArgument x:TypeArguments="x:Double" />
+                </uix:NTypeInto.Timeout>
+                <uix:NTypeInto.VerifyOptions>
+                  <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                    <uix:VerifyExecutionTypeIntoOptions.Retry>
+                      <InArgument x:TypeArguments="x:Boolean" />
+                    </uix:VerifyExecutionTypeIntoOptions.Retry>
+                    <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                      <InArgument x:TypeArguments="x:Double" />
+                    </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                  </uix:VerifyExecutionTypeIntoOptions>
+                </uix:NTypeInto.VerifyOptions>
+              </uix:NTypeInto>
+              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Password'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,197.6" sap2010:WorkflowViewState.IdRef="NClick_8" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="0f96271e-41e0-4cc6-a536-00f42fdc7f98" Version="V5">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable BrowserURL="127.0.0.1/auth" ContentHash="7tTrynohKkmmvWsKSwg1mw" DesignTimeRectangle="1054, 736, 412, 58" ElementType="InputBoxPassword" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='input-password' tag='INPUT' type='password' class='input-field pl-12 pr-12' placeholder='Enter your password' aaname='Password' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="98f0ba02-8f36-4d44-be24-582833264702" InformativeScreenshot="5ddccf4c9bd6bc69d657e17c3af73832.jpg" Reference="0lMVdDpNSk2615ruw2Pqmg/xWUQqVR1R0Wp4SYXEw1hhA" ScopeSelectorArgument="&lt;html app='chrome.exe' title='VeggieAI | Auth' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target CVScreenId="5433793f-a274-44d5-a1b2-6037c7ebea5b" CvTextArea="1051, 709, 76, 15" CvTextArgument="Password" CvType="Text" DesignTimeRectangle="1054, 707, 412, 22" ElementType="Text" FuzzySelectorArgument="&lt;webctrl aaname='Password' parentid='primary-fields' tag='LABEL' type='' class='block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' check:innerText='Password' /&gt;" Guid="c1f6abcc-4cda-4e2a-937e-3dc1d9727102" SearchSteps="FuzzySelector, CV" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NClick.Target>
+              </uix:NClick>
+              <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" ClipboardMode="Never" DisplayName="Type Into 'Password'" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,249.6" sap2010:WorkflowViewState.IdRef="NTypeInto_3" InteractionMode="SameAsCard" ScopeIdentifier="0f96271e-41e0-4cc6-a536-00f42fdc7f98" Text="Yorkshire@123" Version="V5">
+                <uix:NTypeInto.Target>
+                  <uix:TargetAnchorable BrowserURL="127.0.0.1/auth" ContentHash="dLQ_-WUhx0a6DUBnNRplmg" DesignTimeRectangle="1054, 736, 412, 58" ElementType="InputBoxPassword" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='input-password' tag='INPUT' type='password' class='input-field pl-12 pr-12' placeholder='Enter your password' aaname='Password' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="6405029c-2f50-4826-9656-edfb9ff48d01" InformativeScreenshot="c2ed492fbb9b50a68f5e09002e1d8ad8.jpg" Reference="0lMVdDpNSk2615ruw2Pqmg/NCGkSEVonUCLqv9IJUH0xg" ScopeSelectorArgument="&lt;html app='chrome.exe' title='VeggieAI | Auth' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target CVScreenId="5989df51-33c5-4587-9a8c-095bf1ef3534" CvTextArea="1051, 709, 76, 15" CvTextArgument="Password" CvType="Text" DesignTimeRectangle="1054, 707, 412, 22" ElementType="Text" FuzzySelectorArgument="&lt;webctrl aaname='Password' parentid='primary-fields' tag='LABEL' type='' class='block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' check:innerText='Password' /&gt;" Guid="6f8b2958-9791-4ed2-b34e-d2567803d2f2" SearchSteps="FuzzySelector, CV" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NTypeInto.Target>
+                <uix:NTypeInto.VerifyOptions>
+                  <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                    <uix:VerifyExecutionTypeIntoOptions.Retry>
+                      <InArgument x:TypeArguments="x:Boolean" />
+                    </uix:VerifyExecutionTypeIntoOptions.Retry>
+                    <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                      <InArgument x:TypeArguments="x:Double" />
+                    </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                  </uix:VerifyExecutionTypeIntoOptions>
+                </uix:NTypeInto.VerifyOptions>
+              </uix:NTypeInto>
+              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Type the 5-digit code s…'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,197.6" sap2010:WorkflowViewState.IdRef="NClick_9" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="0f96271e-41e0-4cc6-a536-00f42fdc7f98" Version="V5">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable BrowserURL="127.0.0.1/auth" CVScreenId="ec467606-4ad2-4cdc-a2c8-33881ee9c268" ContentHash="vZ-7RkHMkked-NKwpeIITg" CvElementArea="1071, 910, 378, 67" CvType="InputBox" DesignTimeRectangle="1072, 913, 374, 63" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='captcha-answer' tag='INPUT' type='text' class='input-field font-mono tracking-[0.18em] text-base md:text-lg' placeholder='Type 5-digit code' aaname='' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="4da0b7b4-a160-4fa5-bb3d-5964711a1b7e" InformativeScreenshot="891f70140d02f97fbc47331daba2a1df.jpg" IsResponsive="True" Reference="0lMVdDpNSk2615ruw2Pqmg/vuluWfM_UkmboQHF__LqPQ" ScopeSelectorArgument="&lt;html app='chrome.exe' title='VeggieAI | Auth' /&gt;" SearchSteps="FuzzySelector, CV" Version="V6" WaitForReadyArgument="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target CVScreenId="ec467606-4ad2-4cdc-a2c8-33881ee9c268" CvTextArea="1070, 884, 315, 18" CvTextArgument="Type the 5-digit code shown in the image." CvType="Text" DesignTimeRectangle="1072, 882, 374, 22" ElementType="Text" FuzzySelectorArgument="&lt;webctrl id='captcha-prompt' tag='P' type='' class='text-sm text-gray-600 dark:text-gray-400 mb-2' aaname='Type the 5-digit code shown in the image.' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:innerText='Type the 5-digit code shown in the image.' /&gt;" Guid="36a4780b-c61d-4e2f-84f8-0bf8eccb91c0" SearchSteps="FuzzySelector, CV" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NClick.Target>
+              </uix:NClick>
+              <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" ClipboardMode="Never" DisplayName="Type Into 'Type the 5-digit code s…'" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,249.6" sap2010:WorkflowViewState.IdRef="NTypeInto_4" InteractionMode="SameAsCard" ScopeIdentifier="0f96271e-41e0-4cc6-a536-00f42fdc7f98" Text="00000" Version="V5">
+                <uix:NTypeInto.DelayAfter>
+                  <InArgument x:TypeArguments="x:Double" />
+                </uix:NTypeInto.DelayAfter>
+                <uix:NTypeInto.DelayBefore>
+                  <InArgument x:TypeArguments="x:Double" />
+                </uix:NTypeInto.DelayBefore>
+                <uix:NTypeInto.DelayBetweenKeys>
+                  <InArgument x:TypeArguments="x:Double" />
+                </uix:NTypeInto.DelayBetweenKeys>
+                <uix:NTypeInto.InUiElement>
+                  <InArgument x:TypeArguments="ui:UiElement" />
+                </uix:NTypeInto.InUiElement>
+                <uix:NTypeInto.OutUiElement>
+                  <OutArgument x:TypeArguments="ui:UiElement" />
+                </uix:NTypeInto.OutUiElement>
+                <uix:NTypeInto.Target>
+                  <uix:TargetAnchorable BrowserURL="127.0.0.1/auth" CVScreenId="73e652f1-0013-47fb-b611-d4ec2ec14089" ContentHash="UA49LePQbEuyN6LXB7SQJg" CvElementArea="1071, 910, 378, 67" CvType="InputBox" DesignTimeRectangle="1072, 913, 374, 63" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='captcha-answer' tag='INPUT' type='text' class='input-field font-mono tracking-[0.18em] text-base md:text-lg' placeholder='Type 5-digit code' aaname='' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="7753b0ae-2293-43c6-9827-ab9d3f4c03a5" InformativeScreenshot="b1982ce0fcb01a1c198d14ee3dbdda1c.jpg" IsResponsive="True" Reference="0lMVdDpNSk2615ruw2Pqmg/P-8ZfGrHU0ml0Qj2sUBojA" ScopeSelectorArgument="&lt;html app='chrome.exe' title='VeggieAI | Auth' /&gt;" SearchSteps="FuzzySelector, CV" Version="V6" WaitForReadyArgument="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target CVScreenId="73e652f1-0013-47fb-b611-d4ec2ec14089" CvTextArea="1070, 884, 315, 18" CvTextArgument="Type the 5-digit code shown in the image." CvType="Text" DesignTimeRectangle="1072, 882, 374, 22" ElementType="Text" FuzzySelectorArgument="&lt;webctrl id='captcha-prompt' tag='P' type='' class='text-sm text-gray-600 dark:text-gray-400 mb-2' aaname='Type the 5-digit code shown in the image.' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:innerText='Type the 5-digit code shown in the image.' /&gt;" Guid="b814e84f-6a34-405e-beb7-dd4a4e369fc7" SearchSteps="FuzzySelector, CV" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NTypeInto.Target>
+                <uix:NTypeInto.Timeout>
+                  <InArgument x:TypeArguments="x:Double" />
+                </uix:NTypeInto.Timeout>
+                <uix:NTypeInto.VerifyOptions>
+                  <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                    <uix:VerifyExecutionTypeIntoOptions.Retry>
+                      <InArgument x:TypeArguments="x:Boolean" />
+                    </uix:VerifyExecutionTypeIntoOptions.Retry>
+                    <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                      <InArgument x:TypeArguments="x:Double" />
+                    </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                  </uix:VerifyExecutionTypeIntoOptions>
+                </uix:NTypeInto.VerifyOptions>
+              </uix:NTypeInto>
+              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Checkbox'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,197.6" sap2010:WorkflowViewState.IdRef="NClick_10" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="0f96271e-41e0-4cc6-a536-00f42fdc7f98" Version="V5">
+                <uix:NClick.DelayAfter>
+                  <InArgument x:TypeArguments="x:Double" />
+                </uix:NClick.DelayAfter>
+                <uix:NClick.DelayBefore>
+                  <InArgument x:TypeArguments="x:Double" />
+                </uix:NClick.DelayBefore>
+                <uix:NClick.InUiElement>
+                  <InArgument x:TypeArguments="ui:UiElement" />
+                </uix:NClick.InUiElement>
+                <uix:NClick.OutUiElement>
+                  <OutArgument x:TypeArguments="ui:UiElement" />
+                </uix:NClick.OutUiElement>
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable BrowserURL="127.0.0.1/auth" CVScreenId="a615109e-b265-4a00-ac54-50e367de1f72" ContentHash="nrGau0ZLzEOeaaZ3l5EpyQ" CvElementArea="1051, 1012, 23, 23" CvType="CheckBox" DesignTimeRectangle="1054, 1015, 18, 18" ElementType="CheckBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='agree-terms' tag='INPUT' type='checkbox' class='mt-0.5 h-4 w-4 rounded border-gray-300 text-primary-600 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-800' aaname='                                                           I agree to the terms and conditions.                                    ' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="542f384f-990d-4d72-a538-9e5cb57d7fd0" InformativeScreenshot="b3d262ec21b51ccc5abea41a4cda3cd3.jpg" Reference="0lMVdDpNSk2615ruw2Pqmg/oCjhaVsEIkWCj82N8jpwtA" ScopeSelectorArgument="&lt;html app='chrome.exe' title='VeggieAI | Auth' /&gt;" SearchSteps="FuzzySelector, CV" Version="V6" WaitForReadyArgument="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target CVScreenId="a615109e-b265-4a00-ac54-50e367de1f72" CvElementArea="1051, 1012, 23, 23" CvTextArea="1082, 1016, 268, 16" CvTextArgument="I agree to the terms and conditions." CvType="CheckBox" DesignTimeRectangle="1054, 1015, 296, 22" ElementType="Text" FuzzySelectorArgument="&lt;webctrl parentid='field-terms' tag='LABEL' type='' class='inline-flex items-start gap-3 cursor-pointer select-none' aaname='                                                       ' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:innerText='I agree to the terms and conditions.' /&gt;" Guid="10dcc897-3da6-47f7-ba63-f14988b70eac" SearchSteps="FuzzySelector, CV" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NClick.Target>
+                <uix:NClick.Timeout>
+                  <InArgument x:TypeArguments="x:Double" />
+                </uix:NClick.Timeout>
+              </uix:NClick>
+              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Create Account'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,197.6" sap2010:WorkflowViewState.IdRef="NClick_11" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="0f96271e-41e0-4cc6-a536-00f42fdc7f98" Version="V5">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable BrowserURL="127.0.0.1/auth" CVScreenId="632ef135-dcd3-44cd-aca1-fed668d26f58" ContentHash="B9aBt92bEkqSGBkt5B99yw" CvElementArea="1050, 1054, 418, 63" CvTextArea="1174, 1077, 138, 18" CvTextArgument="Create Account" CvType="Button" DesignTimeRectangle="1054, 1058, 412, 58" ElementType="Button" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='auth-submit' tag='BUTTON' type='submit' class='form-field w-full btn-primary flex items-center justify-center gap-2 py-3.5' aaname='                 Create Account                                                 ' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:innerText='Create Account' /&gt;" Guid="9dcdbb90-fb43-4018-a055-cbb752119384" InformativeScreenshot="e36f706b4ff9e9165121999b78d06fa6.jpg" Reference="0lMVdDpNSk2615ruw2Pqmg/XTUVfasGPEW9cJ9p5ieg2g" ScopeSelectorArgument="&lt;html app='chrome.exe' title='VeggieAI | Auth' /&gt;" SearchSteps="FuzzySelector, CV" Version="V6" WaitForReadyArgument="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target CVScreenId="632ef135-dcd3-44cd-aca1-fed668d26f58" CvElementArea="1050, 1054, 418, 63" CvTextArea="1174, 1077, 138, 18" CvTextArgument="Create Account" CvType="Button" DesignTimeRectangle="1176, 1074, 136, 27" ElementType="Text" FuzzySelectorArgument="&lt;webctrl id='auth-submit-label' tag='SPAN' type='' class='' aaname='Create Account' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:innerText='Create Account' /&gt;" Guid="731f7ba5-dd55-4273-a379-9d547b461891" SearchSteps="FuzzySelector, CV" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NClick.Target>
+              </uix:NClick>
+              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'One-Time Password'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,197.6" sap2010:WorkflowViewState.IdRef="NClick_15" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="0f96271e-41e0-4cc6-a536-00f42fdc7f98" Version="V5">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable BrowserURL="127.0.0.1/auth" CVScreenId="89ec7855-8f3f-44c7-8ded-68da9e053ce5" ContentHash="H-1j4BLOUU6DJSQ7MoQcWA" CvElementArea="1058, 685, 415, 60" CvType="InputBox" DesignTimeRectangle="1060, 687, 412, 58" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='input-otp' tag='INPUT' type='text' class='input-field pl-12 tracking-[0.35em]' placeholder='Enter OTP code' aaname='One-Time Password' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="49e000be-b19f-4356-b292-d2ea7e413a13" InformativeScreenshot="91ac1d2274fd3e8566527d0e8bd76ff7.jpg" IsResponsive="True" Reference="0lMVdDpNSk2615ruw2Pqmg/4l6WqTgbrEmgGdIPlOjrzQ" ScopeSelectorArgument="&lt;html app='chrome.exe' title='VeggieAI | Auth' /&gt;" SearchSteps="FuzzySelector, CV" Version="V6" WaitForReadyArgument="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target CVScreenId="89ec7855-8f3f-44c7-8ded-68da9e053ce5" CvTextArea="1057, 659, 155, 16" CvTextArgument="One-Time Password" CvType="Text" DesignTimeRectangle="1060, 658, 412, 23" ElementType="Text" FuzzySelectorArgument="&lt;webctrl parentid='otp-fields' tag='LABEL' type='' class='block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5' aaname='One-Time Password' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:innerText='One-Time Password' /&gt;" Guid="daf75629-fc39-404c-88ef-fa54e5ed3be1" SearchSteps="FuzzySelector, CV" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NClick.Target>
+              </uix:NClick>
+              <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" ClipboardMode="Never" DisplayName="Type Into 'One-Time Password'" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,249.6" sap2010:WorkflowViewState.IdRef="NTypeInto_5" InteractionMode="SameAsCard" ScopeIdentifier="0f96271e-41e0-4cc6-a536-00f42fdc7f98" Text="00000" Version="V5">
+                <uix:NTypeInto.Target>
+                  <uix:TargetAnchorable BrowserURL="127.0.0.1/auth" CVScreenId="89ec7855-8f3f-44c7-8ded-68da9e053ce5" ContentHash="tdTdnNIPKUC98hT8FEL_JQ" CvElementArea="1058, 685, 415, 60" CvType="InputBox" DesignTimeRectangle="1060, 687, 412, 58" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='input-otp' tag='INPUT' type='text' class='input-field pl-12 tracking-[0.35em]' placeholder='Enter OTP code' aaname='One-Time Password' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="c20fc128-64bc-4b17-81f9-0f2e7f912e92" InformativeScreenshot="91ac1d2274fd3e8566527d0e8bd76ff7.jpg" IsResponsive="True" Reference="0lMVdDpNSk2615ruw2Pqmg/TZ8moeUPjkeuWTu7V32PDw" ScopeSelectorArgument="&lt;html app='chrome.exe' title='VeggieAI | Auth' /&gt;" SearchSteps="FuzzySelector, CV" Version="V6" WaitForReadyArgument="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target CVScreenId="89ec7855-8f3f-44c7-8ded-68da9e053ce5" CvTextArea="1057, 659, 155, 16" CvTextArgument="One-Time Password" CvType="Text" DesignTimeRectangle="1060, 658, 412, 23" ElementType="Text" FuzzySelectorArgument="&lt;webctrl parentid='otp-fields' tag='LABEL' type='' class='block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5' aaname='One-Time Password' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:innerText='One-Time Password' /&gt;" Guid="c31dd6a7-2f84-4e07-89bc-a596599d709f" SearchSteps="FuzzySelector, CV" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NTypeInto.Target>
+                <uix:NTypeInto.VerifyOptions>
+                  <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                    <uix:VerifyExecutionTypeIntoOptions.Retry>
+                      <InArgument x:TypeArguments="x:Boolean" />
+                    </uix:VerifyExecutionTypeIntoOptions.Retry>
+                    <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                      <InArgument x:TypeArguments="x:Double" />
+                    </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                  </uix:VerifyExecutionTypeIntoOptions>
+                </uix:NTypeInto.VerifyOptions>
+              </uix:NTypeInto>
+              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Verify OTP'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,197.6" sap2010:WorkflowViewState.IdRef="NClick_16" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="0f96271e-41e0-4cc6-a536-00f42fdc7f98" Version="V5">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable BrowserURL="127.0.0.1/auth" CVScreenId="89ec7855-8f3f-44c7-8ded-68da9e053ce5" ContentHash="xdg3yw1evkizIcYkBMyEMA" CvElementArea="1056, 759, 419, 64" CvTextArea="1201, 782, 96, 21" CvTextArgument="Verify OTP" CvType="Button" DesignTimeRectangle="1060, 763, 412, 59" ElementType="Button" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='otp-verify-btn' tag='BUTTON' type='submit' class='form-field w-full btn-primary flex items-center justify-center gap-2 py-3.5 mb-3' aaname='                 Verify OTP                                                 ' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:innerText='Verify OTP' /&gt;" Guid="5e9e9cbc-d09b-42c5-9642-f947bc6ae128" InformativeScreenshot="4737931d80496c34cc2dd3fa25623d34.jpg" Reference="0lMVdDpNSk2615ruw2Pqmg/7uGGnSp4JUGyQYEi4FAnYg" ScopeSelectorArgument="&lt;html app='chrome.exe' title='VeggieAI | Auth' /&gt;" SearchSteps="FuzzySelector, CV" Version="V6" WaitForReadyArgument="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target CVScreenId="89ec7855-8f3f-44c7-8ded-68da9e053ce5" CvElementArea="1056, 759, 419, 64" CvTextArea="1201, 782, 96, 21" CvTextArgument="Verify OTP" CvType="Button" DesignTimeRectangle="1203, 779, 94, 27" ElementType="Text" FuzzySelectorArgument="&lt;webctrl id='otp-verify-label' tag='SPAN' type='' class='' aaname='Verify OTP' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:innerText='Verify OTP' /&gt;" Guid="aa97d2a9-ab33-45a0-84e7-47353249b9d6" SearchSteps="FuzzySelector, CV" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NClick.Target>
+              </uix:NClick>
+              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'IMG'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,197.6" sap2010:WorkflowViewState.IdRef="NClick_2" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="0f96271e-41e0-4cc6-a536-00f42fdc7f98" Version="V5">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable BrowserURL="127.0.0.1/predict" CVScreenId="9d9de673-18ae-4c8a-a49f-09cf26ee8c24" ContentHash="P--veWFhgEmAGYM7-kFRKA" CvElementArea="380, 998, 82, 80" CvType="Icon" DesignTimeRectangle="387, 1002, 72, 72" ElementType="Icon" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl parentid='sample-list' tag='IMG' /&gt;" Guid="031b364c-ff55-4a04-8c70-4b2334e068d7" ImageBase64="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" InformativeScreenshot="e42b114e021a85244d2fdb397e2a4ddf.jpg" Reference="0lMVdDpNSk2615ruw2Pqmg/XXbcU8gKAUCu-3Oaxp_70A" ScopeSelectorArgument="&lt;html app='chrome.exe' title='VeggieAI | Classify' /&gt;" SearchSteps="Selector, CV" Version="V6" WaitForReadyArgument="Interactive" />
+                </uix:NClick.Target>
+              </uix:NClick>
+              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Classify Vegetable'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,197.6" sap2010:WorkflowViewState.IdRef="NClick_3" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="0f96271e-41e0-4cc6-a536-00f42fdc7f98" Version="V5">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable BrowserURL="127.0.0.1/predict" CVScreenId="ed0520f2-d275-44b7-ba70-017c804c423c" ContentHash="EOgAZEej1E2HlKhmRBBzRQ" CvElementArea="383, 1011, 569, 67" CvType="Button" DesignTimeRectangle="387, 1014, 562, 63" ElementType="Button" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='predict-btn' tag='BUTTON' type='button' class='w-full btn-primary flex items-center justify-center gap-2 py-4' aaname='                                                         Classify Vegetable                 ' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:innerText='Classify Vegetable' /&gt;" Guid="8b39881a-7183-4e49-acfb-07977040dce5" InformativeScreenshot="36f8c79a0835fd6a0addbb230cfe523f.jpg" Reference="0lMVdDpNSk2615ruw2Pqmg/eXtqQBotIUyyH9dLqFQiRg" ScopeSelectorArgument="&lt;html app='chrome.exe' title='VeggieAI | Classify' /&gt;" SearchSteps="FuzzySelector, CV" Version="V6" WaitForReadyArgument="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target CVScreenId="ed0520f2-d275-44b7-ba70-017c804c423c" CvElementArea="383, 1011, 569, 67" CvTextArea="599, 1035, 166, 22" CvTextArgument="Classify Vegetable" CvType="Button" DesignTimeRectangle="602, 1032, 163, 27" ElementType="Text" FuzzySelectorArgument="&lt;webctrl id='predict-label' tag='SPAN' type='' class='' aaname='Classify Vegetable' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:innerText='Classify Vegetable' /&gt;" Guid="0c0fcecc-80fe-4e22-8858-129446d2a368" SearchSteps="FuzzySelector, CV" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NClick.Target>
+              </uix:NClick>
+              <Delay Duration="00:00:20" sap:VirtualizedContainerService.HintSize="416,117.6" sap2010:WorkflowViewState.IdRef="Delay_2" />
+            </Sequence>
+          </ActivityAction>
+        </uix:NApplicationCard.Body>
+        <uix:NApplicationCard.OCREngine>
+          <ActivityFunc x:TypeArguments="sd:Image, scg:IEnumerable(scg:KeyValuePair(sd1:Rectangle, x:String))">
+            <ActivityFunc.Argument>
+              <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
+            </ActivityFunc.Argument>
+          </ActivityFunc>
+        </uix:NApplicationCard.OCREngine>
+        <uix:NApplicationCard.TargetApp>
+          <uix:TargetApp Area="-9, -9, 1938, 1158" BrowserType="Chrome" ContentHash="_VwJ8Ta5bEu3Izewo68EJg" IconBase64="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" InformativeScreenshot="4a2f1408b2050fc0668f2fc41d8a63df.jpg" Reference="0lMVdDpNSk2615ruw2Pqmg/T5Mu_PQl5Umozj1gc2nTyA" Selector="&lt;html app='chrome.exe' title='VeggieAI | Home' /&gt;" Url="http://127.0.0.1:5000/" Version="V2" />
+        </uix:NApplicationCard.TargetApp>
+      </uix:NApplicationCard>
+    </Sequence>
+  </Sequence>
+</Activity>

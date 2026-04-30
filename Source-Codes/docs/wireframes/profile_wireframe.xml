@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wireframePage
+  id="profile"
+  route="/profile"
+  template="profile.html"
+  auth="required"
+  viewportDesktop="1440x900"
+  viewportMobile="390x844"
+>
+  <uses source="global_shell_wireframe.xml" />
+
+  <region id="profile-header" bounds="300,130,840,90">
+    <component id="title" type="heading" />
+    <component id="subtitle" type="paragraph" />
+  </region>
+
+  <region id="profile-grid" bounds="180,250,1080,520">
+    <column id="profile-card" bounds="180,250,520,520">
+      <component id="avatar-block" type="avatar-plus-upload" />
+      <component id="profile-form" type="name-email-form" />
+      <component id="profile-save" type="primary-action" />
+    </column>
+
+    <column id="password-card" bounds="740,250,520,520">
+      <component id="password-form" type="change-password-form" />
+      <component id="password-save" type="primary-action" />
+      <component id="danger-zone" type="delete-account-warning" />
+    </column>
+  </region>
+
+  <overlay id="delete-profile-confirm" type="confirm-dialog" expected="Are you sure?" />
+</wireframePage>

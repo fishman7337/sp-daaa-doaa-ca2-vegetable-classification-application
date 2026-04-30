@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wireframeManifest
+  id="veggieai-frontend-wireframes-2026-02-14"
+  app="VeggieAI"
+  description="Per-page XML wireframes mirroring current frontend structure."
+>
+  <source path="webapp/app/templates/base.html" mapsTo="global_shell_wireframe.xml" />
+  <source path="webapp/app/templates/home.html" mapsTo="home_wireframe.xml" />
+  <source path="webapp/app/templates/auth.html" mapsTo="auth_wireframe.xml" />
+  <source path="webapp/app/templates/predict.html" mapsTo="predict_wireframe.xml" />
+  <source path="webapp/app/templates/prices.html" mapsTo="prices_wireframe.xml" />
+  <source path="webapp/app/templates/profile.html" mapsTo="profile_wireframe.xml" />
+
+  <page file="global_shell_wireframe.xml" route="*" purpose="shared-layout" />
+  <page file="home_wireframe.xml" route="/" purpose="landing" />
+  <page file="auth_wireframe.xml" route="/auth" purpose="authentication" />
+  <page file="predict_wireframe.xml" route="/predict" purpose="classification-and-history-tabs" />
+  <page file="prices_wireframe.xml" route="/prices" purpose="price-comparison" />
+  <page file="profile_wireframe.xml" route="/profile" purpose="account-management" />
+  <page
+    file="history_wireframe.xml"
+    route="/history"
+    purpose="history-view-state"
+    behavior="redirect-to-/predict?tab=history"
+  />
+
+  <legacyRoute from="/web/login" to="/auth" />
+  <legacyRoute from="/web/register" to="/auth" />
+  <legacyRoute from="/web/predict" to="/predict" />
+  <legacyRoute from="/web/history" to="/history" />
+</wireframeManifest>

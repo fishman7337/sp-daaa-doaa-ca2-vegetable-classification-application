@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wireframePage
+  id="auth"
+  route="/auth"
+  template="auth.html"
+  auth="public"
+  viewportDesktop="1440x900"
+  viewportMobile="390x844"
+>
+  <uses source="global_shell_wireframe.xml" />
+
+  <region id="auth-bg-effects" type="decorative-orbs" bounds="0,0,1440,900" />
+  <region id="auth-shell" type="two-column" bounds="120,120,1200,680">
+    <column id="left-media" desktopOnly="true" bounds="120,140,560,640">
+      <component id="left-photo-card" type="hero-image-card" />
+      <component id="left-copy" type="overlay-heading" />
+    </column>
+
+    <column id="right-form" bounds="740,140,460,640">
+      <component id="form-card" type="auth-card" />
+      <component id="mode-switch" type="segmented-control" values="Sign In,Sign Up" />
+
+      <state id="primary-fields">
+        <field id="full-name" optionalInSignIn="true" />
+        <field id="email" required="true" />
+        <field id="password" required="true" hasToggle="true" />
+        <field id="captcha" optionalByPolicy="true" />
+        <field id="terms" signUpOnly="true" />
+        <action id="submit" />
+      </state>
+
+      <state id="otp-fields" hiddenByDefault="true">
+        <field id="otp-code" />
+        <action id="verify-otp" />
+        <action id="otp-resend" />
+        <action id="otp-back" />
+      </state>
+
+      <state id="forgot-password-fields" hiddenByDefault="true" />
+      <state id="reset-password-fields" hiddenByDefault="true" />
+    </column>
+  </region>
+
+  <responsiveRules>
+    <rule id="auth-mobile-stack">
+      <when viewport="&lt;=1024" />
+      <change target="auth-shell.left-media" action="hide" />
+      <change target="auth-shell.right-form" action="center-and-expand" />
+    </rule>
+  </responsiveRules>
+</wireframePage>

@@ -1,0 +1,238 @@
+name: CI
+
+on:
+  push:
+    branches: ["main", "develop"]
+  pull_request:
+    branches: ["main", "develop"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  security-events: write
+
+env:
+  PIP_DISABLE_PIP_VERSION_CHECK: "1"
+  PIP_NO_CACHE_DIR: "1"
+  PYTHONDONTWRITEBYTECODE: "1"
+  BACKEND_COVERAGE_MIN: "85"
+  MODEL_SERVICE_COVERAGE_MIN: "85"
+
+defaults:
+  run:
+    working-directory: Source-Codes
+
+jobs:
+  docs-and-lint:
+    name: Documentation and lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+          cache-dependency-path: |
+            Source-Codes/backend/requirements-dev.txt
+            Source-Codes/model_service/requirements-dev.txt
+
+      - name: Install lint dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r backend/requirements-dev.txt
+          pip install -r model_service/requirements-dev.txt
+
+      - name: Validate folder documentation
+        run: python scripts/check_readmes.py
+
+      - name: Ruff lint
+        run: |
+          ruff check backend main.py
+          ruff check model_service
+
+      - name: Ruff format check
+        run: |
+          ruff format --check backend main.py
+          ruff format --check model_service
+
+  backend-tests:
+    name: Backend tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+          cache-dependency-path: Source-Codes/backend/requirements-dev.txt
+
+      - name: Install backend dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r backend/requirements-dev.txt
+
+      - name: Run backend pytest suite
+        run: |
+          mkdir -p reports
+          pytest backend/tests \
+            --cov=backend \
+            --cov-report=term-missing:skip-covered \
+            --cov-report=xml:reports/backend-coverage.xml \
+            --cov-fail-under=${BACKEND_COVERAGE_MIN} \
+            --junitxml=reports/backend-tests.xml
+
+      - name: Upload backend test artifacts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: backend-test-artifacts
+          path: |
+            Source-Codes/reports/backend-tests.xml
+            Source-Codes/reports/backend-coverage.xml
+
+  model-service-tests:
+    name: Model service tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+          cache-dependency-path: Source-Codes/model_service/requirements-dev.txt
+
+      - name: Install model-service dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r model_service/requirements-dev.txt
+
+      - name: Run model-service pytest suite
+        run: |
+          mkdir -p reports
+          pytest model_service/tests \
+            --cov=model_service \
+            --cov-report=term-missing:skip-covered \
+            --cov-report=xml:reports/model-service-coverage.xml \
+            --cov-fail-under=${MODEL_SERVICE_COVERAGE_MIN} \
+            --junitxml=reports/model-service-tests.xml
+
+      - name: Upload model-service test artifacts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: model-service-test-artifacts
+          path: |
+            Source-Codes/reports/model-service-tests.xml
+            Source-Codes/reports/model-service-coverage.xml
+
+  mlops:
+    name: MLOps gates
+    runs-on: ubuntu-latest
+    needs: [backend-tests, model-service-tests]
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+          cache-dependency-path: |
+            Source-Codes/backend/requirements-dev.txt
+            Source-Codes/model_service/requirements-dev.txt
+
+      - name: Install runtime dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r backend/requirements-dev.txt
+          pip install -r model_service/requirements-dev.txt
+
+      - name: Validate model registry
+        run: |
+          mkdir -p reports
+          python scripts/validate_model_registry.py --models-root models --report reports/model-registry-report.json
+
+      - name: Runtime smoke checks
+        run: |
+          set -euo pipefail
+          python main.py > reports/local-stack.log 2>&1 &
+          STACK_PID=$!
+          trap 'kill ${STACK_PID} >/dev/null 2>&1 || true' EXIT
+          python scripts/smoke_serving.py --base-url http://127.0.0.1:8000 --wait-seconds 70
+          python scripts/smoke_webapp.py --base-url http://127.0.0.1:5000 --wait-seconds 70
+
+      - name: Upload MLOps artifacts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mlops-artifacts
+          path: |
+            Source-Codes/reports/model-registry-report.json
+            Source-Codes/reports/local-stack.log
+
+  security:
+    name: Security scans
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+          cache-dependency-path: |
+            Source-Codes/backend/requirements.txt
+            Source-Codes/model_service/requirements.txt
+
+      - name: Install security tools
+        run: |
+          python -m pip install --upgrade pip
+          pip install "bandit[toml]>=1.7,<2" pip-audit
+
+      - name: Bandit SAST
+        run: |
+          mkdir -p reports
+          bandit -r backend model_service -x backend/tests,model_service/tests -ll -ii -s B104 -f json -o reports/bandit-report.json
+
+      - name: Python dependency audit
+        run: |
+          pip-audit -r backend/requirements.txt --ignore-vuln CVE-2026-25990 --ignore-vuln CVE-2025-53643 --ignore-vuln CVE-2025-69223 --ignore-vuln CVE-2025-69224 --ignore-vuln CVE-2025-69225 --ignore-vuln CVE-2025-69226 --ignore-vuln CVE-2025-69227 --ignore-vuln CVE-2025-69228 --ignore-vuln CVE-2025-69229 --ignore-vuln CVE-2025-69230
+          pip-audit -r model_service/requirements.txt --ignore-vuln CVE-2026-25990
+
+      - name: Gitleaks secret scan
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload security artifacts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: security-artifacts
+          path: Source-Codes/reports/bandit-report.json
+
+  docker-build:
+    name: Docker builds
+    runs-on: ubuntu-latest
+    needs: [docs-and-lint, backend-tests, model-service-tests, mlops, security]
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Build backend image
+        run: docker build -f backend/Dockerfile -t veggieai/backend:ci .
+
+      - name: Build model-service image
+        run: docker build -f model_service/Dockerfile -t veggieai/model-service:ci .

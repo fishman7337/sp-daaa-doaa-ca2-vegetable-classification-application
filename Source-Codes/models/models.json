@@ -1,0 +1,16 @@
+{
+  "models": [
+    {
+      "name": "model_a",
+      "path": "model_a",
+      "labels": "labels.json",
+      "config": "config.json"
+    },
+    {
+      "name": "model_b",
+      "path": "model_b",
+      "labels": "labels.json",
+      "config": "config.json"
+    }
+  ]
+}

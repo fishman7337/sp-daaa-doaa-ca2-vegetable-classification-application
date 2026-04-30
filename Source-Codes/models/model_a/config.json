@@ -1,0 +1,6 @@
+{
+  "image_size": [224, 224],
+  "normalize": "0-1",
+  "channels": "rgb",
+  "top_k": 3
+}
