@@ -88,7 +88,7 @@ jobs:
             --junitxml=reports/backend-tests.xml
 
       - name: Upload backend test artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         if: always()
         with:
           name: backend-test-artifacts
@@ -126,7 +126,7 @@ jobs:
             --junitxml=reports/model-service-tests.xml
 
       - name: Upload model-service test artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         if: always()
         with:
           name: model-service-test-artifacts
@@ -172,7 +172,7 @@ jobs:
           python scripts/smoke_webapp.py --base-url http://127.0.0.1:5000 --wait-seconds 70
 
       - name: Upload MLOps artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         if: always()
         with:
           name: mlops-artifacts
@@ -217,7 +217,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload security artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         if: always()
         with:
           name: security-artifacts
