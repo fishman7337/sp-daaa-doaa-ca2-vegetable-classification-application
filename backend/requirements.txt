@@ -1,5 +1,5 @@
 Flask>=3.0,<4
-flask-cors>=6.0,<7
+flask-cors>=6.0.2,<7
 Flask-WTF>=1.2,<2
 PyJWT>=2.8,<3
 bcrypt>=4.1,<5
