@@ -48,7 +48,7 @@ Include:
 
 - Never commit `.env`.
 - Use `.env.example` only for placeholders.
-- Configure production values in Render, GitHub/GitLab CI variables, or another secret manager.
+- Configure production values in Render, GitHub Actions variables, or another secret manager.
 - Rotate any exposed key immediately.
 
 ## Optional Integrations

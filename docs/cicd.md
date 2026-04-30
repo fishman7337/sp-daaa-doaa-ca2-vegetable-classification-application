@@ -1,6 +1,6 @@
 # CI/CD
 
-Primary CI/CD is implemented with GitHub Actions in `.github/workflows/ci.yml` when `Source-Codes/` is the repository root. The outer submission folder also includes a root-level `.github/` mirror for publishing the full package. The GitLab pipeline in `.gitlab-ci.yml` is retained only as an optional mirror for coursework traceability.
+Primary CI/CD is implemented with GitHub Actions in `.github/workflows/ci.yml`. The GitHub workflow runs from the source tree and excludes presentation and declaration artifacts from the repository.
 
 ## Pipeline Stages
 - `docs`

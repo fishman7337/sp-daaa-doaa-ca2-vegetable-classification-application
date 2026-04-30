@@ -32,7 +32,6 @@ docs/             Architecture, CI/CD, MLOps, testing, security, runbooks, ADRs
 models/           Lightweight model registry packages and manifest
 model_service/    Flask model-service API used by local MLOps checks
 model_serving/    TensorFlow Serving assets, notebooks, and model export evidence
-presentation/     Slide outline and demo script
 reports/          Generated reports and evidence outputs
 scripts/          Smoke tests, registry validation, RPA helpers
 tf_models/        SavedModel artifacts for TensorFlow Serving
@@ -130,7 +129,7 @@ python scripts/smoke_webapp.py --base-url http://127.0.0.1:5000
 
 ## CI/CD And MLOps
 
-Primary automation is defined in `.github/workflows/ci.yml` for GitHub when `Source-Codes/` is the repository root. The outer submission folder also includes a root-level `.github/` mirror for the case where the full package is pushed to GitHub. A GitLab pipeline is retained only as an optional mirror for coursework traceability.
+Primary automation is defined in `.github/workflows/ci.yml`. In this repository layout, the root workflow runs with `Source-Codes/` as the working directory so only application source, tests, models, and operational docs are part of the GitHub submission.
 
 The CI gates cover:
 

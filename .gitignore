@@ -79,6 +79,11 @@ backend/uploads/**/*
 /tmp_testdb/
 /tmp_uploads/
 
+# Presentation and declaration artifacts are kept outside the source repository
+/presentation/
+/Slides/
+/Declaration/
+
 # OS/IDE
 .DS_Store
 Thumbs.db

@@ -2,13 +2,14 @@
 
 from __future__ import annotations
 
-import sys
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
 EXCLUDED_DIR_NAMES = {
     ".git",
+    ".github",
+    ".gitlab",
     ".mypy_cache",
     ".pytest_cache",
     ".ruff_cache",
@@ -22,6 +23,7 @@ EXCLUDED_RELATIVE_PATHS = {
     ".dist",
     "backend/uploads",
     "backend/uploads/avatars",
+    "presentation",
     "webapp/instance",
 }
 
