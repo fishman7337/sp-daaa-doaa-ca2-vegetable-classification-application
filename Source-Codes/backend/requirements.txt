@@ -4,6 +4,6 @@ Flask-WTF>=1.2,<2
 PyJWT>=2.8,<3
 bcrypt>=4.1,<5
 requests>=2.31,<3
-pydantic>=2.6,<3
+pydantic>=2.13.3,<3
 Pillow>=12.2.0,<13
 gunicorn>=22,<23
