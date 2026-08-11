@@ -10,6 +10,7 @@ EXCLUDED_DIR_NAMES = {
     ".git",
     ".github",
     ".gitlab",
+    "graphify-out",
     ".mypy_cache",
     ".pytest_cache",
     ".ruff_cache",

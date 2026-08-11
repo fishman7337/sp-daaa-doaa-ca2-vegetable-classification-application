@@ -9,7 +9,6 @@ on:
 
 permissions:
   contents: read
-  security-events: write
 
 env:
   PIP_DISABLE_PIP_VERSION_CHECK: "1"
@@ -17,16 +16,19 @@ env:
   BACKEND_COVERAGE_MIN: "85"
   MODEL_SERVICE_COVERAGE_MIN: "85"
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   docs-and-lint:
+    timeout-minutes: 30
     name: Documentation and lint
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
-
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
         with:
           python-version: "3.11"
           cache: "pip"
@@ -54,14 +56,14 @@ jobs:
           ruff format --check model_service
 
   backend-tests:
+    timeout-minutes: 30
     name: Backend tests
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
-
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
         with:
           python-version: "3.11"
           cache: "pip"
@@ -83,7 +85,7 @@ jobs:
             --junitxml=reports/backend-tests.xml
 
       - name: Upload backend test artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         if: always()
         with:
           name: backend-test-artifacts
@@ -92,14 +94,14 @@ jobs:
             reports/backend-coverage.xml
 
   model-service-tests:
+    timeout-minutes: 30
     name: Model service tests
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
-
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
         with:
           python-version: "3.11"
           cache: "pip"
@@ -121,7 +123,7 @@ jobs:
             --junitxml=reports/model-service-tests.xml
 
       - name: Upload model-service test artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         if: always()
         with:
           name: model-service-test-artifacts
@@ -130,15 +132,15 @@ jobs:
             reports/model-service-coverage.xml
 
   mlops:
+    timeout-minutes: 30
     name: MLOps gates
     runs-on: ubuntu-latest
     needs: [backend-tests, model-service-tests]
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
-
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
         with:
           python-version: "3.11"
           cache: "pip"
@@ -167,7 +169,7 @@ jobs:
           python scripts/smoke_webapp.py --base-url http://127.0.0.1:5000 --wait-seconds 70
 
       - name: Upload MLOps artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         if: always()
         with:
           name: mlops-artifacts
@@ -176,16 +178,17 @@ jobs:
             reports/local-stack.log
 
   security:
+    timeout-minutes: 30
     name: Security scans
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
         with:
           fetch-depth: 0
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
         with:
           python-version: "3.11"
           cache: "pip"
@@ -205,29 +208,29 @@ jobs:
 
       - name: Python dependency audit
         run: |
-          pip-audit -r backend/requirements.txt --ignore-vuln CVE-2026-25990 --ignore-vuln CVE-2025-53643 --ignore-vuln CVE-2025-69223 --ignore-vuln CVE-2025-69224 --ignore-vuln CVE-2025-69225 --ignore-vuln CVE-2025-69226 --ignore-vuln CVE-2025-69227 --ignore-vuln CVE-2025-69228 --ignore-vuln CVE-2025-69229 --ignore-vuln CVE-2025-69230
-          pip-audit -r model_service/requirements.txt --ignore-vuln CVE-2026-25990
+          pip-audit -r backend/requirements-dev.txt
+          pip-audit -r model_service/requirements-dev.txt
 
       - name: Gitleaks secret scan
-        uses: gitleaks/gitleaks-action@v2
+        uses: gitleaks/gitleaks-action@dcedce43c6f43de0b836d1fe38946645c9c638dc # v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload security artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         if: always()
         with:
           name: security-artifacts
           path: reports/bandit-report.json
 
   docker-build:
+    timeout-minutes: 30
     name: Docker builds
     runs-on: ubuntu-latest
     needs: [docs-and-lint, backend-tests, model-service-tests, mlops, security]
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
-
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
       - name: Build backend image
         run: docker build -f backend/Dockerfile -t veggieai/backend:ci .
 

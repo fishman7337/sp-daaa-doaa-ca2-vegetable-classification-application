@@ -36,6 +36,18 @@ def _wait_for_health(base_url: str, timeout_sec: int) -> dict[str, Any]:
 
 
 def run(base_url: str, model_name: str, wait_seconds: int) -> None:
+    """Validate model-service readiness and the prediction contract.
+
+    Args:
+        base_url: Root URL of the running model-service API.
+        model_name: Registered model package to exercise.
+        wait_seconds: Maximum number of seconds to wait for readiness.
+
+    Raises:
+        RuntimeError: If the model is unavailable or the prediction response is
+            unsuccessful or incomplete.
+        TimeoutError: If the health endpoint does not become ready in time.
+    """
     health_payload = _wait_for_health(base_url, wait_seconds)
     models = health_payload.get("models") or []
     if model_name not in models:
@@ -70,6 +82,11 @@ def run(base_url: str, model_name: str, wait_seconds: int) -> None:
 
 
 def main() -> int:
+    """Parse command-line arguments and run the model-service smoke test.
+
+    Returns:
+        Process exit status. A successful smoke test returns zero.
+    """
     parser = argparse.ArgumentParser(description="Smoke test for model-service runtime readiness.")
     parser.add_argument("--base-url", default="http://127.0.0.1:8000")
     parser.add_argument("--model-name", default="model_a")

@@ -34,6 +34,16 @@ def _assert_page_ok(base_url: str, path: str) -> None:
 
 
 def run(base_url: str, wait_seconds: int) -> None:
+    """Validate backend readiness, API discovery, and public web pages.
+
+    Args:
+        base_url: Root URL of the running backend application.
+        wait_seconds: Maximum number of seconds to wait for readiness.
+
+    Raises:
+        RuntimeError: If the backend contract or a public page is invalid.
+        TimeoutError: If the backend health endpoint does not become ready.
+    """
     health_payload = _wait_for_backend(base_url, wait_seconds)
     models = health_payload.get("models")
     if not isinstance(models, list) or not models:
@@ -58,6 +68,11 @@ def run(base_url: str, wait_seconds: int) -> None:
 
 
 def main() -> int:
+    """Parse command-line arguments and run the backend smoke test.
+
+    Returns:
+        Process exit status. A successful smoke test returns zero.
+    """
     parser = argparse.ArgumentParser(description="Smoke test for backend and webapp routes.")
     parser.add_argument("--base-url", default="http://127.0.0.1:5000")
     parser.add_argument("--wait-seconds", type=int, default=60)

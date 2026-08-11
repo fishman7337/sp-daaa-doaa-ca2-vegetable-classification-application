@@ -11,7 +11,11 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-from model_service.utils.model_validation import build_model_manifest, validate_models_root
+# The repository root must be on ``sys.path`` before importing the local service.
+from model_service.utils.model_validation import (  # noqa: E402
+    build_model_manifest,
+    validate_models_root,
+)
 
 
 def _args() -> argparse.Namespace:
@@ -35,6 +39,11 @@ def _args() -> argparse.Namespace:
 
 
 def main() -> int:
+    """Validate registered model packages and optionally write a JSON report.
+
+    Returns:
+        Zero when every package is valid; otherwise one.
+    """
     args = _args()
     models_root = Path(args.models_root).expanduser().resolve()
 
