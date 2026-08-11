@@ -195,6 +195,7 @@ def main() -> None:
                     exit_code = code
                     raise RuntimeError(f"{name} exited unexpectedly")
                 print(f"[main] {name} stopped")
+                exit_code = 1
                 raise RuntimeError(f"{name} stopped")
             time.sleep(0.5)
     except KeyboardInterrupt:
