@@ -144,8 +144,8 @@ def load_settings() -> Settings:
     models_root = _resolve_path(_get_env("MODELS_ROOT", str(default_models_root)), repo_root)
     upload_dir = _resolve_path(_get_env("UPLOAD_DIR", str(default_uploads)), repo_root)
     return Settings(
-        SECRET_KEY=_get_env("SECRET_KEY", "dev-secret"),
-        JWT_SECRET=_get_env("JWT_SECRET", "dev-jwt-secret"),
+        SECRET_KEY=_get_env("SECRET_KEY", "dev-session-secret-change-before-production"),
+        JWT_SECRET=_get_env("JWT_SECRET", "dev-jwt-secret-change-before-production"),
         JWT_EXPIRES_MINUTES=_get_int("JWT_EXPIRES_MINUTES", 120),
         DATABASE_PATH=database_path,
         MODEL_SERVICE_URL=_get_env("MODEL_SERVICE_URL", "http://127.0.0.1:8000"),

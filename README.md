@@ -2,6 +2,15 @@
 
 VeggieAI is a Flask-based machine learning operations project for vegetable image classification, price lookup, authenticated prediction history, and optional chatbot assistance. The repository is structured as a coursework-ready application with a backend API, Jinja web UI, model service, model registry, tests, CI/CD gates, security checks, and operational documentation.
 
+## Evidence and interpretation
+
+| Evidence-backed measure | Current repository evidence |
+| --- | --- |
+| Model packages | The registry validates **2 serving packages**, VegNet-23 and VegNet-101. |
+| Coverage gates | Backend and model-service suites each enforce at least **85%** code coverage. |
+
+The qualitative outcome is a split Flask web/model-service system with authentication, prediction history, model governance, Docker builds, and optional OpenAI/Roboflow integrations. Optional live detection is an integration path, not a measured real-time or deployment claim.
+
 ## Coursework Context
 
 - Institution: Singapore Polytechnic, School of Computing

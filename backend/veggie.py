@@ -193,7 +193,7 @@ def _preprocess_image_for_tf_serving(image_bytes: bytes, input_size: int, model_
         image = ImageOps.exif_transpose(image)
         image = ImageOps.grayscale(image)
         image = image.resize((input_size, input_size), resample=resize_strategy)
-        pixels = list(image.getdata())
+        pixels = list(image.get_flattened_data())
 
     rows: list[list[list[float]]] = []
     index = 0

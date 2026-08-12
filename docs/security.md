@@ -35,6 +35,28 @@
 - pip-audit (Python dependencies)
 - gitleaks (secret scanning)
 
+## Dependency Audit Policy
+
+- Runtime and development manifests must pass `pip-audit` without blanket
+  advisory suppressions. Each development manifest includes its corresponding
+  runtime manifest, so CI audits the complete resolved service environment.
+- The Pillow lower bound is `12.3.0`, the first release that clears all Pillow
+  advisories known to the audit database at the 2026-08-11 review.
+- `aiohttp` is not a backend or model-service dependency. Its obsolete CI
+  suppressions were removed instead of adding an unnecessary constraint.
+- pytest is constrained to `9.0.3` or newer to remediate `PYSEC-2026-1845` in
+  the backend and model-service test environments.
+- Any future exception must identify one advisory and package, explain why an
+  upgrade is incompatible, name an owner, link a remediation issue, and include
+  a review date no more than 90 days away. Expired exceptions fail review.
+
+Current exceptions: **none**.
+
+The 2026-08-11 review reproduced the removed exceptions against historical
+versions: `CVE-2026-25990` affected Pillow 12.1.0, while `CVE-2025-53643` and
+`CVE-2025-69223` through `CVE-2025-69230` affected aiohttp 3.12.13. The current
+runtime manifests resolve neither vulnerable version.
+
 ## Optional Integrations
 
 Roboflow workflow detection requires `inference-sdk`. Keep it out of default production dependencies unless workflow mode is actively used and its transitive dependencies have been reviewed.

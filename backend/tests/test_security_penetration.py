@@ -121,7 +121,7 @@ def test_invalid_and_expired_tokens_are_rejected(client, auth_token, token_kind:
         token = f"{auth_token}corrupted"
     elif token_kind == "wrong_secret":
         payload = jwt.decode(auth_token, options={"verify_signature": False})
-        token = jwt.encode(payload, "not-the-right-secret", algorithm="HS256")
+        token = jwt.encode(payload, "not-the-right-secret-at-least-thirty-two-bytes", algorithm="HS256")
     else:
         now_epoch = int(time.time())
         payload = {
